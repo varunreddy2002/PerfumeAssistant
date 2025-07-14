@@ -1,0 +1,30 @@
+[
+    {
+        "gender": "feminine",
+        "preferred_notes": [
+            "vanilla",
+            "jasmine",
+            "bergamot"
+        ],
+        "preferred_accords": [
+            "floral",
+            "powdery",
+            "sweet"
+        ],
+        "free_text": "I want something elegant and soft, ideal for daily wear but still noticeable."
+    },
+    {
+        "gender": "masculine",
+        "preferred_notes": [
+            "cedarwood",
+            "grapefruit",
+            "leather"
+        ],
+        "preferred_accords": [
+            "woody",
+            "spicy",
+            "fresh"
+        ],
+        "free_text": "Looking for something confident and clean, ideal for professional settings."
+    }
+]

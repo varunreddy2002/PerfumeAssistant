@@ -1,3 +1,5 @@
+# input_collector.py
+
 def collect_user_input():
     print("\nPersonalized Scent Recommender - User Input\n")
 
@@ -20,8 +22,36 @@ def collect_user_input():
         "free_text": free_text
     }
 
-# Example usage
+# Only runs if you execute this file directly from terminal
 if __name__ == "__main__":
-    user_input = collect_user_input()
-    print("\nCollected User Input:")
-    print(user_input)
+    user_data = collect_user_input()
+    
+    print("\n✅ Collected User Input:")
+    print(user_data)
+
+import os
+import json
+
+user_input_file = "user_input.json"
+
+# Load existing data if it's a valid list
+if os.path.exists(user_input_file):
+    with open(user_input_file, "r") as f:
+        try:
+            all_inputs = json.load(f)
+            if not isinstance(all_inputs, list):
+                all_inputs = []
+        except json.JSONDecodeError:
+            all_inputs = []
+else:
+    all_inputs = []
+
+# Append new input
+all_inputs.append(user_data)
+
+# Save back to file
+with open(user_input_file, "w") as f:
+    json.dump(all_inputs, f, indent=4)
+    print("\n📁 Appended to user_input.json")
+
+
