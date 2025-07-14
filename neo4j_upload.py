@@ -1,8 +1,14 @@
 from neo4j import GraphDatabase
 import pandas as pd
-# URI examples: "neo4j://localhost", "neo4j+s://xxx.databases.neo4j.io"
-URI = "neo4j+s://6765e61f.databases.neo4j.io"
-AUTH = ("neo4j", "vyZbWGJXjnfbwkAXI6C-UvnSgHZQ9QYqhwesnMajhhM")
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+
+URI = os.getenv("NEO4J_URI")
+AUTH = (os.getenv("NEO4J_USER"), os.getenv("NEO4J_PASSWORD"))
+
 
 def split_notes(notes):
     if pd.isna(notes):
