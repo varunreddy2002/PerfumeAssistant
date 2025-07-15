@@ -3,65 +3,11 @@ import os
 import json
 
 def collect_user_input():
-    print("\nPersonalized Scent Recommender - User Input\n")
-
-    user = input("Username: ").strip().lower()
-
-    gender = input("Preferred gender profile for the scent (feminine, masculine, unisex): ").strip().lower()
-
-    a = 0
-    while(a==0):
-        print("\nEnter the user's age:")
-        a1 = input("Strictly write the answer as a number:")
-        try:
-            age = int(a1)
-            a = 1
-        except:
-            print("The given response was not in the correct type, please give a new response.")
-
-    country = input("What is the preferred perfume country of production: ").strip().lower()
-
-    brand = input("Perfume Brand preference: ").strip().lower()
-
-    print("\nEnter 2–3 specific scent notes you prefer (e.g., vanilla, rose, citrus):")
-    notes_raw = input("Separate each with a comma: ")
-    preferred_notes = [n.strip().lower() for n in notes_raw.split(",")]
-
-    print("\nEnter 2–3 general scent styles or accords you prefer (e.g., floral, woody, sweet):")
-    accords_raw = input("Separate each with a comma: ")
-    preferred_accords = [a.strip().lower() for a in accords_raw.split(",")]
-
-    t= 0
-    while(t==0):
-        print("\nEnter the expected temperature for the day:")
-        temperature = input("Strictly write the answer as a number, in fahrenheit:")
-        try:
-            temp = int(temperature)
-            t = 1
-        except:
-            print("The given response was not in the correct type, please give a new response.")
     
-    mood = input("\nWhat mood do you want to evoke (e.g., bold, sincere, emo, romantic): ")
-
-    occasion = input("\nWhat occasion is the perfume for:")
-
-    humidity = input("Level of expected humidity (high, medium, low, none): ").strip().lower()
-
-    free_text = input("\nList any futher descriptions/parameters for the perfume: ")
+    prompt = input("Explain in detail what type of perfume/cologne you would like to find:")
 
     return {
-        "user":user,
-        "gender": gender,
-        "age":age,
-        "country":country,
-        "brand":brand,
-        "preferred_notes": preferred_notes,
-        "preferred_accords": preferred_accords,
-        "temperature":temp,
-        "mood":mood,
-        'occasion':occasion,
-        'humidity':humidity,
-        "free_text": free_text
+        "prompt":prompt
     }
 
 def json_append(user_data):

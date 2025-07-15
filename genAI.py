@@ -20,7 +20,7 @@ def llm(prompt, past_prompt):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents= f"""
-        You are a fragrance expert. A user says: '{prompt}'.  The user's past prompts are '{past_prompt}'.
+        You are a fragrance expert. A user says: '{prompt}'.
         Identify:
         - Mood
         - Occasion (if mentioned)
