@@ -1,0 +1,7 @@
+neo4j
+pandas
+python-dotenv
+genai
+pydantic
+uvicorn
+numpy
