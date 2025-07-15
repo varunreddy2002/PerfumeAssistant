@@ -11,7 +11,6 @@ URI  = os.getenv("NEO4J_URI")
 USER = os.getenv("NEO4J_USER")
 PWD  = os.getenv("NEO4J_PASSWORD")
 api_k = os.getenv("API_KEY")
-# api_k = "AIzaSyC7wKywRl94y89kMWkBvnWM6_Mth9AYgjU"
 client = genai.Client(
     api_key=api_k
 )
