@@ -3,10 +3,11 @@ import os
 import json
 
 def collect_user_input():
-    
+    username = input("Username:").strip().lower()
     prompt = input("Explain in detail what type of perfume/cologne you would like to find:")
 
     return {
+        "username":username,
         "prompt":prompt
     }
 

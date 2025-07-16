@@ -11,16 +11,20 @@ URI  = os.getenv("NEO4J_URI")
 USER = os.getenv("NEO4J_USER")
 PWD  = os.getenv("NEO4J_PASSWORD")
 api_k = os.getenv("API_KEY")
+# try:
+#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "intern-api-use.json"
+# except:
+#     print("Key Not Found")
 client = genai.Client(
     api_key=api_k
 )
 
 
-def llm(prompt, past_prompt):
+def llm(prompt, past_perfume):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents= f"""
-        You are a fragrance expert. A user says: '{prompt}'.
+        You are a fragrance expert. A user says: '{prompt}'.  Their prior perfume recommendations were '{past_perfume}'.
         Identify:
         - Mood
         - Occasion (if mentioned)
@@ -36,16 +40,17 @@ def llm(prompt, past_prompt):
         ,
     )
     return response.text
-
-with open('user_input.json', 'r') as file:
-    data = json.load(file)
-
+try:
+    with open('user_input.json', 'r') as file:
+        data = json.load(file)
+    if not data:
+        data = ''
+except:
+    data = ''
 target_user = "tester" #change to user_var when making into method
-matching_entries = [entry for entry in data if entry.get("user") == target_user]
+matching_entries = [entry for entry in data if entry.get("username") == target_user]
 
 current_query = collect_user_input()
-
-json_append(current_query)
 
 query = ""
 output=llm(current_query, matching_entries)
@@ -65,7 +70,7 @@ print(notes)
 query = f"""
 MATCH (p:Perfume)-[:HAS_TOP_NOTE|HAS_MIDDLE_NOTE|HAS_BASE_NOTE]->(n:Note)
 WHERE toLower(n.name) IN {notes}
-RETURN p.name, COUNT(*) AS score
+RETURN p.name AS perfume, COUNT(*) AS score, p.rating AS rating
 ORDER BY score DESC, p.rating DESC
 LIMIT 3
 """
@@ -73,5 +78,9 @@ driver = GraphDatabase.driver(URI, auth=(USER, PWD))
 driver.verify_connectivity()
 with driver.session() as session:
     result = session.run(query)
+    perfume_recs = []
     for record in result:
         print(record)
+        perfume_recs.append(record)
+current_query["Perfume-Recommendations"] = perfume_recs
+json_append(current_query)

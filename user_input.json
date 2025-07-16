@@ -1,20 +1,7 @@
 [
     {
-        "user": "tester",
-        "gender": "masculine",
-        "age": 25,
-        "country": "",
-        "brand": "",
-        "preferred_notes": [
-            ""
-        ],
-        "preferred_accords": [
-            ""
-        ],
-        "temperature": 88,
-        "mood": "sincere",
-        "occasion": "work",
-        "humidity": "low",
-        "free_text": ""
+        "username": "tester",
+        "prompt": "A sharp cologne that lasts for a long time in high heat without being excessive.",
+        "Perfume-Recommendations": []
     }
 ]
