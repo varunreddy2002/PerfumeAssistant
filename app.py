@@ -25,6 +25,7 @@
 #     app.run(debug=True)
 
 from flask import Flask, render_template, request, redirect, url_for, session
+from main import find_rec
  
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -46,7 +47,11 @@ def chat():
  
     if request.method == 'POST':
         user_input = request.form['user_input']
-        results = generate_recommendations(user_input)
+        user_data = {
+        "username":session['username'],
+        "prompt":user_input
+        }
+        results = find_rec(user_data)
  
     return render_template('chat.html', username=session['username'], user_input=user_input, results=results)
  
