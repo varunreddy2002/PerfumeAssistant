@@ -1,0 +1,101 @@
+/* Global reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body.login-page {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(270deg, #0ea37f, #3b82f6, #10a37f, #2563eb);
+  background-size: 800% 800%;
+  animation: gradientWave 20s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Animated gradient background */
+@keyframes gradientWave {
+  0% {
+    background-position: 10% 50%;
+  }
+  50% {
+    background-position: 90% 50%;
+  }
+  100% {
+    background-position: 10% 50%;
+  }
+}
+
+/* IFF logo top-left */
+.iff-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+  height: auto;
+  z-index: 1000;
+  user-select: none;
+}
+
+/* Login box */
+.login-form {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Header text */
+.welcome-header {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0ea37f;
+  margin-bottom: 10px;
+}
+
+/* Subtext below header */
+.login-subtext {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  padding: 0 10px;
+}
+
+/* Input field */
+.login-form input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #0ea37f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0d8c6d;
+}

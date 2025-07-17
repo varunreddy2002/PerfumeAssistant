@@ -38,7 +38,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Perfume Recommender</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='prompt_style.css') }}">
 </head>
 <body>
     <div class="container">
@@ -50,7 +50,9 @@
             </div>
         {% else %}
             <form method="post" id="prompt-form">
-                <textarea name="user_input" placeholder="Describe your perfume preference..." required></textarea>
+                <textarea name="user_input" 
+                placeholder="Find a subtle perfume that is perfect for an evening dinner. It should smell woody and spicy, and evoke a natural feeling.  The perfume should be long lasting, and work well in moderate to high temperatures." 
+                required></textarea>
                 <button type="submit">Submit</button>
             </form>
         {% endif %}
