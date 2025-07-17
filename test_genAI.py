@@ -1,24 +1,25 @@
-from vertexai.preview import generative_models
-import vertexai
-from PIL import Image
-from io import BytesIO
+from google import genai
+from dotenv import load_dotenv
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "intern-api-use.json"
+load_dotenv()
+URI  = os.getenv("NEO4J_URI")
+USER = os.getenv("NEO4J_USER")
+PWD  = os.getenv("NEO4J_PASSWORD")
+api_k = os.getenv("API_KEY")
+client = genai.Client(api_key=api_k)
 
-vertexai.init(project="your-project-id", location="us-central1")
+# TODO(developer): Update and un-comment below line
+output_file = "example.png"
 
-model = generative_models.ImageGenerationModel.from_pretrained("imagen@001")
-
-response = model.generate(
-    prompt="A cthulu-inspired horror environment",
-    max_output_tokens=1024,
-    temperature=0.7,
-    candidate_count=1,
-    image_size="512x512"
+image = client.models.generate_images(
+    model="imagen-4.0-generate-preview-06-06",
+    prompt="a batman villain",
+    config = {"number_of_images": 1}
 )
 
-image_bytes = response.images[0].image_bytes
-image = Image.open(BytesIO(image_bytes))
-image.save("imagen_result.png")
-image.show()
+image.generated_images[0].image.save(output_file)
+
+print(f"Created output image using {len(image.generated_images[0].image.image_bytes)} bytes")
+# Example response:
+# Created output image using 1234567 bytes
