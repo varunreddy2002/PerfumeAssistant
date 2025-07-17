@@ -1,38 +1,80 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatbox</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body class="chat-page">
+  <div class="chat-container">
+    <h2 class="chat-prompt-label">Describe your ideal scent</h2>
+
+    <form method="POST" class="chat-form">
+      <div class="input-wrapper">
+        <textarea 
+          name="user_input" 
+          placeholder="A woody, dark, and spicy perfume perfect for a night-out or nice dinner" 
+          rows="2" 
+          required
+          oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px';"
+        ></textarea>
+        <button type="submit" class="send-button" aria-label="Send message">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send" viewBox="0 0 24 24">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Perfume Chat</title>
+    <title>Perfume Recommender</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="chat-container">
-        <h2>Perfume Recommender</h2>
-        <div id="chat-box">
-            {% for message in messages %}
-                <div class="message {{ message['role'] }}">
-                    <div class="bubble">{{ message['content'] }}</div>
-                </div>
-            {% endfor %}
-            <div id="loading" class="message assistant" style="display: none;">
-                <div class="bubble">
-                    <div class="spinner"></div> Generating response...
-                </div>
+    <div class="container">
+        <h2>Welcome, {{ username }}!</h2>
+ 
+        {% if user_input %}
+            <div class="user-prompt">
+                <strong>Your prompt:</strong> {{ user_input }}
             </div>
-        </div>
-        <form method="post" id="chat-form">
-            <textarea name="user_input" placeholder="Type your message..." required></textarea>
-            <button type="submit">Send</button>
-        </form>
+        {% else %}
+            <form method="post" id="prompt-form">
+                <textarea name="user_input" placeholder="Describe your perfume preference..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+ 
+        {% if results %}
+            <div class="results">
+                <h3>Recommended Perfumes:</h3>
+                <ul>
+                    {% for result in results %}
+                        <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     </div>
-
+ 
     <script>
-        const form = document.getElementById('chat-form');
-        const loading = document.getElementById('loading');
-
-        form.addEventListener('submit', () => {
-            loading.style.display = 'flex';
-        });
+        const form = document.getElementById('prompt-form');
+        if (form) {
+            form.addEventListener('submit', () => {
+                form.querySelector("button").disabled = true;
+                form.querySelector("button").textContent = "Generating...";
+            });
+        }
     </script>
 </body>
 </html>

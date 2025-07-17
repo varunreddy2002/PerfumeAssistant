@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scentify Login</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="login-page">
+
+  <!-- IFF Logo -->
+  <img src="{{ url_for('static', filename='iff-logo.png') }}" alt="IFF Logo" class="iff-logo">
+
   <form method="POST" class="login-form">
-    <h2>Enter your name</h2>
-    <input type="text" name="username" placeholder="Username" required>
-    <button type="submit">Login</button>
+    <h1 class="welcome-header">Welcome to Scentify</h1>
+    <p class="login-subtext">
+      Discover your perfect scent through a personalized journey of preferences and inspirations, powered by IFF’s fragrance expertise.
+    </p>
+    <label for="username">Username</label><br>
+    <input type="text" id="username" name="username" placeholder="Enter your name" required />
+    <button type="submit" class="login-button">Continue</button>
   </form>
+
 </body>
 </html>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
