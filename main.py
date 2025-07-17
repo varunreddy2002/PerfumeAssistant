@@ -6,6 +6,9 @@ from neo4j import GraphDatabase
 from genAI import llm
 from notes_embed import load_embeddings, find_closest_note
 from input_collector import collect_user_input, json_append
+import warnings
+from requests.exceptions import RequestsDependencyWarning
+warnings.filterwarnings("ignore", category=RequestsDependencyWarning)
 
 load_dotenv()
 URI = os.getenv("NEO4J_URI")
@@ -30,7 +33,7 @@ except:
 target_user = user_input['username']
 matching_entries = [entry["Recommended_Perfumes"] for entry in data if entry.get("username") == target_user]
 
-res = llm(current_query)
+res = llm(current_query, matching_entries)
 match = re.search(r'\{[\s\S]*?\}', res)
 if match:
     json_str = match.group(0)

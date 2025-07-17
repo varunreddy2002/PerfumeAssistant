@@ -1,44 +1,11 @@
 [
     {
-        "user": "tester",
-        "gender": "masculine",
-        "age": 25,
-        "country": "",
-        "brand": "",
-        "preferred_notes": [
-            ""
-        ],
-        "preferred_accords": [
-            ""
-        ],
-        "temperature": 88,
-        "mood": "sincere",
-        "occasion": "work",
-        "humidity": "low",
-        "free_text": ""
-    },
-    {
-        "prompt": "I want a perfume that can be fresh, light and can be used it for the office."
-    },
-    {
-        "prompt": "I want a fresh and light perfume for the office"
-    },
-    {
-        "prompt": "I want a perfume with jasmine smell"
-    },
-    {
-        "prompt": "i want a light and natural perfume"
-    },
-    {
-        "prompt": "i want a light perfume"
-    },
-    {
-        "prompt": "I want a light perfume"
-    },
-    {
-        "prompt": " I want a light perfume"
-    },
-    {
-        "prompt": "I want a morning refreshing cologne"
+        "username": "tester",
+        "prompt": "I want a perfume for a cold environment, lasting 8 hours minimum, and smells like citrus and vanilla.",
+        "Recommended_Perfumes": [
+            "gold",
+            "vanilla-marble",
+            "vanille-eau-de-parfum"
+        ]
     }
 ]
