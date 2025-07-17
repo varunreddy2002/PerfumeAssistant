@@ -32,7 +32,6 @@
 </html>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
  -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +42,7 @@
 <body>
     <div class="container">
         <h2>Welcome, {{ username }}!</h2>
- 
+
         {% if user_input %}
             <div class="user-prompt">
                 <strong>Your prompt:</strong> {{ user_input }}
@@ -51,12 +50,19 @@
         {% else %}
             <form method="post" id="prompt-form">
                 <textarea name="user_input" 
-                placeholder="Find a subtle perfume that is perfect for an evening dinner. It should smell woody and spicy, and evoke a natural feeling.  The perfume should be long lasting, and work well in moderate to high temperatures." 
+                placeholder="Find a subtle perfume that is perfect for an evening dinner. It should smell woody and spicy, and evoke a natural feeling. The perfume should be long lasting, and work well in moderate to high temperatures." 
                 required></textarea>
-                <button type="submit">Submit</button>
+                
+                <!-- Arrow submit button -->
+                <button type="submit" aria-label="Submit">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                        <polyline points="5 12 12 5 19 12"></polyline>
+                    </svg>
+                </button>
             </form>
         {% endif %}
- 
+
         {% if results %}
             <div class="results">
                 <h3>Recommended Perfumes:</h3>
@@ -68,15 +74,15 @@
             </div>
         {% endif %}
     </div>
- 
+
     <script>
         const form = document.getElementById('prompt-form');
         if (form) {
             form.addEventListener('submit', () => {
                 form.querySelector("button").disabled = true;
-                form.querySelector("button").textContent = "Generating...";
             });
         }
     </script>
 </body>
 </html>
+
