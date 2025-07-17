@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from neo4j import GraphDatabase
 from genAI import llm
 from notes_embed import load_embeddings, find_closest_note
+from input_collector import collect_user_input, json_append
 
 load_dotenv()
 URI = os.getenv("NEO4J_URI")
@@ -15,7 +16,20 @@ PWD = os.getenv("NEO4J_PASSWORD")
 note_embeddings = load_embeddings()
 
 # Collect user input
-current_query = input("Describe your ideal scent: ")
+user_input = collect_user_input()
+current_query = user_input["prompt"]
+
+try:
+    with open('user_input.json', 'r') as file:
+        data = json.load(file)
+    if not data:
+        data = ''
+except:
+    data = ''
+
+target_user = user_input['username']
+matching_entries = [entry["Recommended_Perfumes"] for entry in data if entry.get("username") == target_user]
+
 res = llm(current_query)
 match = re.search(r'\{[\s\S]*?\}', res)
 if match:
@@ -48,5 +62,9 @@ driver = GraphDatabase.driver(URI, auth=(USER, PWD))
 driver.verify_connectivity()
 with driver.session() as session:
     result = session.run(query)
+    perfumes = []
     for record in result:
         print(f"Perfume: {record['perfume']} | Match Score: {record['score']} | Rating: {record['rating']}")
+        perfumes.append(record['perfume'])
+user_input["Recommended_Perfumes"] = perfumes
+json_append(user_input)
