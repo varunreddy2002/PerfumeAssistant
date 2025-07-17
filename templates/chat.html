@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfume Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Perfume Recommender</h2>
+        <div id="chat-box">
+            {% for message in messages %}
+                <div class="message {{ message['role'] }}">
+                    <div class="bubble">{{ message['content'] }}</div>
+                </div>
+            {% endfor %}
+            <div id="loading" class="message assistant" style="display: none;">
+                <div class="bubble">
+                    <div class="spinner"></div> Generating response...
+                </div>
+            </div>
+        </div>
+        <form method="post" id="chat-form">
+            <textarea name="user_input" placeholder="Type your message..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const loading = document.getElementById('loading');
+
+        form.addEventListener('submit', () => {
+            loading.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>
