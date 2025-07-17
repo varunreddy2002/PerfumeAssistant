@@ -1,0 +1,252 @@
+/* 🌸 Base Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(135deg, #dbefff, #e9d5ff);
+    background-attachment: fixed;
+    color: #2a2a2a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 🌼 Page Heading */
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 🎨 Controls */
+.controls {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+select {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: white;
+    transition: all 0.3s ease;
+}
+select:hover {
+    transform: scale(1.02);
+}
+
+/* 🎭 Container Layout */
+.diagram-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* 💎 Diagram Card (Glassmorphism) */
+.diagram-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+    padding: 1.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 2rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.diagram-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+}
+.diagram-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 🧬 Emoji Columns */
+.column-diagram .note-block {
+    margin-bottom: 1.2rem;
+}
+.note-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+.note-text {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* 💙 Optional Buttons */
+button, .download-button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background: #0079C1;
+    color: white;
+    transition: background 0.3s ease;
+}
+button:hover, .download-button:hover {
+    background: #005f9e;
+}
+/* Enhanced Diagram Box */
+.diagram-box {
+    width: 360px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.diagram-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Pyramid specific tweaks */
+.diagram-box svg polygon {
+    filter: drop-shadow(0 0 5px rgba(0, 123, 255, 0.5));
+}
+
+/* Column Diagram Styling */
+.column-diagram .note-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    background: linear-gradient(to right, #4f46e5, #0ea5e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.column-diagram .note-text {
+    font-size: 1rem;
+    color: #2d2d2d;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Ring diagram tweak */
+.plotly-graph-div {
+    border-radius: 20px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.plotly-graph-div:hover {
+    transform: scale(1.03);
+}
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .diagram-box {
+    animation: fadeInUp 0.8s ease both;
+  }
+  .diagram-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.3), 0 0 24px rgba(0, 123, 255, 0.2);
+    border-color: rgba(0, 123, 255, 0.5);
+}
+.note-text {
+    list-style-type: disc;
+    padding-left: 16px;
+    font-family: 'Verdana', sans-serif;
+    font-size: 13px;
+    color: #333;
+  }
+  .diagram-box {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    width: 300px;
+    text-align: center;
+  }
+/* === Vertical Column Styling === */
+.column-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .note-block {
+    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(245,245,255,0.9));
+    border-radius: 16px;
+    padding: 14px 18px;
+    width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease;
+  }
+  
+  .note-block:hover {
+    transform: scale(1.02);
+  }
+  
+  .note-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+  }
+  
+  .note-title::before {
+    content: '🌿';
+    font-size: 16px;
+  }
+  
+  .note-title:contains("Top")::before {
+    content: "🌸";
+  }
+  .note-title:contains("Middle")::before {
+    content: "💐";
+  }
+  .note-title:contains("Base")::before {
+    content: "🌲";
+  }
+  
+  .note-text {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.4;
+    text-align: center;
+  }
+        

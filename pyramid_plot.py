@@ -1,75 +1,56 @@
-import plotly.graph_objects as go
+from markupsafe import Markup
 
 def create_note_pyramid(top_notes, middle_notes, base_notes, title="Fragrance Note Pyramid"):
-    layers = [
-        ("Top Notes", top_notes, "#B3DDF2"),       # Light blue
-        ("Middle Notes", middle_notes, "#4FA6D8"), # Medium blue
-        ("Base Notes", base_notes, "#0079C1")      # Dark IFF blue
-    ]
+    from markupsafe import Markup
 
-    fig = go.Figure()
+    svg_template = f"""
+    <svg width="240" height="280" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" style="font-family: 'DM Sans', sans-serif;">
+      <defs>
+        <linearGradient id="topGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#A0E7E5" />
+          <stop offset="100%" stop-color="#72D6C9" />
+        </linearGradient>
+        <linearGradient id="middleGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#B4F8C8" />
+          <stop offset="100%" stop-color="#6EDC93" />
+        </linearGradient>
+        <linearGradient id="baseGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FBE7C6" />
+          <stop offset="100%" stop-color="#FDC490" />
+        </linearGradient>
+      </defs>
 
-    widths = [0.3, 0.6, 1.0]
-    y_levels = [0.75, 0.5, 0.25]
-    layer_height = 0.25  # vertical height for each layer
+      <!-- Top Layer -->
+      <polygon points="100,20 160,80 40,80" fill="url(#topGradient)" opacity="0.95">
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="5s" repeatCount="indefinite" />
+      </polygon>
+      <text x="100" y="55" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Top Notes</text>
+      <text x="100" y="70" text-anchor="middle" font-size="10" fill="#1d1d1d">
+        {"".join(f'<tspan x="100" dy="1.1em">{note}</tspan>' for note in top_notes)}
+        </text>
 
-    # Calculate dynamic height based on total number of notes (approx 30px per note)
-    total_notes = sum(len(notes) for _, notes, _ in layers)
-    height_px = max(400, total_notes * 30)  # minimum 400px height
 
-    # Dynamic font size: smaller if many notes
-    font_size = 13 if total_notes <= 10 else max(9, 20 - total_notes)
+      <!-- Middle Layer -->
+      <polygon points="40,80 160,80 180,160 20,160" fill="url(#middleGradient)" opacity="0.95">
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="5s" begin="0.5s" repeatCount="indefinite" />
+      </polygon>
+      <text x="100" y="115" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">Middle Notes</text>
+      <text x="100" y="130" text-anchor="middle" font-size="10" fill="#ffffff">
+        {"".join(f'<tspan x="100" dy="1.1em">{note}</tspan>' for note in middle_notes)}
+        </text>
 
-    for i, (layer_name, notes, color) in enumerate(layers):
-        width = widths[i]
-        y = y_levels[i]
-        half_width = width / 2
-        next_half = widths[i+1]/2 if i+1 < len(widths) else 0
+      <!-- Base Layer -->
+      <polygon points="20,160 180,160 150,220 50,220" fill="url(#baseGradient)" opacity="0.95">
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="5s" begin="1s" repeatCount="indefinite" />
+      </polygon>
+      <text x="100" y="190" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Base Notes</text>
+      <text x="100" y="205" text-anchor="middle" font-size="10" fill="#2a2a2a">
+        {"".join(f'<tspan x="100" dy="1.1em">{note}</tspan>' for note in base_notes)}
+        </text>
+    </svg>
+    """
 
-        x_points = [-half_width, half_width, next_half, -next_half]
-        y_points = [y, y, y - layer_height, y - layer_height]
-
-        note_text = "<br>".join(notes)
-
-        # Draw colored block
-        fig.add_trace(go.Scatter(
-            x=x_points + [x_points[0]],
-            y=y_points + [y_points[0]],
-            fill="toself",
-            mode="lines",
-            name=layer_name,
-            hoverinfo="text",
-            text=[note_text]*5,
-            fillcolor=color,
-            line=dict(color='white', width=2),
-            showlegend=False
-        ))
-
-        # Add text inside each layer
-        fig.add_trace(go.Scatter(
-            x=[0],
-            y=[y - layer_height / 2],
-            text=[f"<b>{layer_name}</b><br>{note_text}"],
-            mode="text",
-            showlegend=False,
-            hoverinfo='skip',
-            cliponaxis=False,
-            textfont=dict(size=font_size, color="white" if i == 2 else "black")
-        ))
-
-    fig.update_layout(
-        title=title,
-        height=height_px,
-        width=600,
-        xaxis=dict(visible=False, range=[-0.7, 0.7]),
-        yaxis=dict(visible=False, range=[0, 1]),
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        margin=dict(t=60, b=20, l=50, r=50),
-        font=dict(family="Arial", color="#333")
-    )
-
-    return fig
+    return Markup(svg_template)
 
 
 # --- Optional Bonus: Export to PNG or SVG ---
@@ -83,3 +64,57 @@ def export_pyramid(fig, filename="pyramid.png", format="png"):
         export_pyramid(fig, "my_pyramid.svg", format="svg")
     """
     fig.write_image(filename, format=format)
+
+import plotly.graph_objects as go
+
+def create_ring_diagram(top, middle, base):
+    import plotly.graph_objects as go
+
+    all_notes = top + middle + base
+    all_levels = (["Top Notes"] * len(top)) + (["Middle Notes"] * len(middle)) + (["Base Notes"] * len(base))
+
+    # Aesthetic pastel color palette
+    colors = {
+        "Top Notes": "#ffe6ec",      # soft rose
+        "Middle Notes": "#d1e8ff",   # baby blue
+        "Base Notes": "#e0ffe0"      # mint green
+    }
+
+    border_colors = {
+        "Top Notes": "#ffb3c6",
+        "Middle Notes": "#a6d4ff",
+        "Base Notes": "#b2ffb2"
+    }
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Pie(
+        labels=all_notes,
+        values=[1] * len(all_notes),
+        hole=0.5,
+        marker=dict(
+            colors=[colors[lvl] for lvl in all_levels],
+            line=dict(color=[border_colors[lvl] for lvl in all_levels], width=2)
+        ),
+        textinfo='label',
+        textfont=dict(size=13, family="DM Sans"),
+        rotation=90,
+        sort=False,
+        direction="clockwise",
+        hoverinfo='label+percent',
+    ))
+
+    fig.update_layout(
+        title=dict(text="Fragrance Wheel", font=dict(size=16, family="Playfair Display"), x=0.5),
+        showlegend=False,
+        height=300,
+        width=300,
+        margin=dict(t=50, b=0, l=0, r=0),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+    )
+
+    return fig
+
+
+

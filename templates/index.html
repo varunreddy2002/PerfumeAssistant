@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Perfume Visualizer</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="controls">
+            <h2>Choose a Perfume:</h2>
+            <form method="get">
+                <select name="perfume" onchange="this.form.submit()">
+                    {{ options_html | safe }}
+                </select>
+            </form>
+        </div>
+
+        <!-- 🌈 Visual Layout Container -->
+        <div class="diagram-container">
+            <!-- Box 1: Pyramid -->
+            <div class="diagram-box">
+                <h3>Pyramid</h3>
+                {{ pyramid_html | safe }}
+            </div>
+
+            <!-- Box 2: Vertical Column -->
+            <div class="diagram-box">
+                <h3>Vertical Column</h3>
+                <div class="column-diagram">
+                    <div class="note-block">
+                        <div class="note-title">Top Notes</div>
+                        <ul class="note-text">
+                            {% for note in top_notes %}
+                              <li>{{ note }}</li>
+                            {% endfor %}
+                        </ul>      
+                    </div>
+                    <div class="note-block">
+                        <div class="note-title">Middle Notes</div>
+                        <ul class="note-text">
+                            {% for note in middle_notes %}
+                              <li>{{ note }}</li>
+                            {% endfor %}
+                        </ul> 
+                    </div>
+                    <div class="note-block">
+                        <div class="note-title">Base Notes</div>
+                        <ul class="note-text">
+                            {% for note in base_notes %}
+                              <li>{{ note }}</li>
+                            {% endfor %}
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box 3: Concentric Rings -->
+            <div class="diagram-box">
+                <h3>Concentric Rings</h3>
+                {{ ring_html | safe }}
+            </div>
+        </div>
+    </body>
+
+</html>
