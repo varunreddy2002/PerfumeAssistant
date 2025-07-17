@@ -16,5 +16,29 @@
         "occasion": "work",
         "humidity": "low",
         "free_text": ""
+    },
+    {
+        "prompt": "I want a perfume that can be fresh, light and can be used it for the office."
+    },
+    {
+        "prompt": "I want a fresh and light perfume for the office"
+    },
+    {
+        "prompt": "I want a perfume with jasmine smell"
+    },
+    {
+        "prompt": "i want a light and natural perfume"
+    },
+    {
+        "prompt": "i want a light perfume"
+    },
+    {
+        "prompt": "I want a light perfume"
+    },
+    {
+        "prompt": " I want a light perfume"
+    },
+    {
+        "prompt": "I want a morning refreshing cologne"
     }
 ]

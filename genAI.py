@@ -2,10 +2,7 @@ from google import genai
 import json
 import re
 from dotenv import load_dotenv
-from neo4j import GraphDatabase
 import os
-from input_collector import collect_user_input, json_append
-
 load_dotenv()
 URI  = os.getenv("NEO4J_URI")
 USER = os.getenv("NEO4J_USER")
@@ -16,7 +13,7 @@ client = genai.Client(
 )
 
 
-def llm(prompt, past_prompt):
+def llm(prompt):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents= f"""
@@ -36,42 +33,3 @@ def llm(prompt, past_prompt):
         ,
     )
     return response.text
-
-with open('user_input.json', 'r') as file:
-    data = json.load(file)
-
-target_user = "tester" #change to user_var when making into method
-matching_entries = [entry for entry in data if entry.get("user") == target_user]
-
-current_query = collect_user_input()
-
-json_append(current_query)
-
-query = ""
-output=llm(current_query, matching_entries)
-print(output)
-match = re.search(r'\{[\s\S]*?\}', output)
-if match:
-    json_str = match.group(0)
-    parsed = json.loads(json_str)
-    mood= parsed["mood"]
-    occasion=parsed["occasion"]
-    notes=parsed["notes"]
-else:
-    print("❌ No JSON object found.")
-
-print(notes)
-
-query = f"""
-MATCH (p:Perfume)-[:HAS_TOP_NOTE|HAS_MIDDLE_NOTE|HAS_BASE_NOTE]->(n:Note)
-WHERE toLower(n.name) IN {notes}
-RETURN p.name, COUNT(*) AS score
-ORDER BY score DESC, p.rating DESC
-LIMIT 3
-"""
-driver = GraphDatabase.driver(URI, auth=(USER, PWD))
-driver.verify_connectivity()
-with driver.session() as session:
-    result = session.run(query)
-    for record in result:
-        print(record)
