@@ -9,8 +9,12 @@
 </head>
 <body class="login-page">
 
-  <!-- IFF Logo -->
-  <img src="{{ url_for('static', filename='iff-logo.png') }}" alt="IFF Logo" class="iff-logo">
+ <!-- Branded Logo in Top-Left -->
+<div class="logo-container">
+    <img src="{{ url_for('static', filename='company.png') }}" alt="Company Logo" class="company-logo">
+</div>
+
+
 
   <form method="POST" class="login-form">
     <h1 class="welcome-header">Welcome to Scentify</h1>

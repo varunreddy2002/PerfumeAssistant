@@ -35,11 +35,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Perfume Recommender</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='prompt_style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='prompt_style.css') }}" />
+    <style>
+      /* Fixed position back button top-left */
+      #backButton {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 10000;
+      }
+    </style>
 </head>
-<body>
+<body class="prompt-page">
+
+    <!-- Back button fixed top-left -->
+    <button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
+
     <div class="container">
         <h2>Welcome, {{ username }}!</h2>
 
@@ -49,13 +62,24 @@
             </div>
         {% else %}
             <form method="post" id="prompt-form">
-                <textarea name="user_input" 
-                placeholder="Find a subtle perfume that is perfect for an evening dinner. It should smell woody and spicy, and evoke a natural feeling. The perfume should be long lasting, and work well in moderate to high temperatures." 
-                required></textarea>
-                
+                <textarea
+                    name="user_input"
+                    placeholder="EX: Find a subtle perfume that is perfect for an evening dinner. It should smell woody and spicy, and evoke a natural feeling. The perfume should be long lasting, and work well in moderate to high temperatures."
+                    required
+                ></textarea>
+
                 <!-- Arrow submit button -->
-                <button type="submit" aria-label="Submit">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <button type="submit" aria-label="Submit" id="sendButton">
+                    <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
                         <line x1="12" y1="19" x2="12" y2="5"></line>
                         <polyline points="5 12 12 5 19 12"></polyline>
                     </svg>
@@ -75,14 +99,49 @@
         {% endif %}
     </div>
 
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="perfume-animation">
+  <svg width="100" height="140" viewBox="0 0 64 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+    <!-- Rounded bottle base -->
+    <ellipse cx="32" cy="65" rx="22" ry="30" fill="#a3c9f1" stroke="#004080" stroke-width="2"/>
+    <!-- Bottle neck -->
+    <rect x="26" y="15" width="12" height="20" rx="6" ry="6" fill="#2563eb" />
+    <!-- Bottle cap -->
+    <rect x="27" y="5" width="10" height="12" rx="4" ry="4" fill="#1e40af" />
+    <!-- Spray nozzle -->
+    <circle cx="32" cy="5" r="4" fill="#1e40af" />
+    <!-- Spray mist group -->
+    <g id="sprayMist" fill="#a3c9f1" opacity="0.7">
+      <circle class="mistParticle" cx="24" cy="0" r="3"/>
+      <circle class="mistParticle" cx="32" cy="-4" r="2.5"/>
+      <circle class="mistParticle" cx="40" cy="0" r="3"/>
+      <circle class="mistParticle" cx="20" cy="-6" r="2"/>
+      <circle class="mistParticle" cx="44" cy="-6" r="2"/>
+    </g>
+  </svg>
+</div>
+<span>Scentify is brewing your match...</span>
+    </div>
+
     <script>
+        // Back button always goes back to login page from prompt page
+        const backButton = document.getElementById('backButton');
+        backButton.addEventListener('click', () => {
+            window.location.href = "{{ url_for('login') }}";
+        });
+
+        // Show loading overlay and hide back button on form submit
         const form = document.getElementById('prompt-form');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
         if (form) {
             form.addEventListener('submit', () => {
-                form.querySelector("button").disabled = true;
+                form.querySelector("button[type='submit']").disabled = true;
+                loadingOverlay.style.display = 'flex';
+                backButton.style.display = 'none'; // hide back button while loading
             });
         }
     </script>
 </body>
 </html>
-

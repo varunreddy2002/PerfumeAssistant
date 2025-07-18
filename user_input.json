@@ -34,5 +34,205 @@
             "lvers",
             "elysium-pour-homme-eau-intense"
         ]
+    },
+    {
+        "username": "tester",
+        "prompt": "give me a floral sweet perfume",
+        "Recommended_Perfumes": [
+            "artissima",
+            "passion",
+            "gold",
+            "dilis-classic-collection-no-8"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "blinkle bop",
+        "Recommended_Perfumes": [
+            "accident-a-la-vanille-paradis-blanc",
+            "gold",
+            "accident-a-la-vanille-almond-cake-limited-edition",
+            "bottega-veneta-essence-aromatique"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "give me a cologne for business meetings that smells like success",
+        "Recommended_Perfumes": [
+            "cypres-pantelleria",
+            "yes-i-am",
+            "nomade",
+            "neroli-portofino-acqua"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "Find an earthy cologne for men that can be worn at all times of the day ",
+        "Recommended_Perfumes": [
+            "sandalo",
+            "ambre",
+            "black",
+            "passion"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "artissima",
+            "passion",
+            "3-fleurs",
+            "black-orchid"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "gold",
+            "artissima",
+            "tender-light",
+            "rishikesh"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "paris",
+            "dilis-classic-collection-no-8",
+            "armani-code-turquoise-for-women",
+            "1881"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "paris",
+            "dilis-classic-collection-no-8",
+            "armani-code-turquoise-for-women",
+            "1881"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "paris",
+            "dilis-classic-collection-no-8",
+            "armani-code-turquoise-for-women",
+            "1881"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "artissima",
+            "dilis-classic-collection-no-8",
+            "1881",
+            "mystique-femme"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "spicy rose",
+        "Recommended_Perfumes": [
+            "aura",
+            "gold",
+            "wear-love-everywhere",
+            "anticipate"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "artissima",
+            "dilis-classic-collection-no-8",
+            "1881",
+            "mystique-femme"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "spicy rose",
+        "Recommended_Perfumes": [
+            "lulutal-bahrain",
+            "gold",
+            "modern-muse-le-rouge-gloss",
+            "noora"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "Give me a mens cologne good for a dinner\r\n",
+        "Recommended_Perfumes": [
+            "grace",
+            "serenade",
+            "durra",
+            "gold"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "artissima",
+            "dilis-classic-collection-no-8",
+            "1881",
+            "mystique-femme"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "bergamont vanilla orange",
+        "Recommended_Perfumes": [
+            "passion",
+            "gold",
+            "the-only-one",
+            "white-horse"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "bergamont vanilla orange",
+        "Recommended_Perfumes": [
+            "passion",
+            "gold",
+            "the-only-one",
+            "white-horse"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "vanilla",
+        "Recommended_Perfumes": [
+            "gold",
+            "mula-mula-double-caramel",
+            "yes-i-am",
+            "angel-iced-star-collector"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "vanilla",
+        "Recommended_Perfumes": [
+            "gold",
+            "vanilla-marble",
+            "durra",
+            "samsara-shine"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "pine tree\r\n",
+        "Recommended_Perfumes": [
+            "redcolorado",
+            "hero-parfum",
+            "my-way-nectar",
+            "black-forest"
+        ]
     }
 ]
