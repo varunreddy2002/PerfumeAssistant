@@ -34,5 +34,25 @@
             "lvers",
             "elysium-pour-homme-eau-intense"
         ]
+    },
+    {
+        "username": "tester",
+        "prompt": "blurple",
+        "Recommended_Perfumes": [
+            "blanc-violette",
+            "humor-perfeito",
+            "velvet-exclusive",
+            "flor-da-manha"
+        ]
+    },
+    {
+        "username": "eric",
+        "prompt": "Find me a perfurme that is perfect for when I am doing stressful work\r\n",
+        "Recommended_Perfumes": [
+            "oscar",
+            "acqua-di-colonia-lavanda",
+            "sandalwood-neroli",
+            "angel-schlesser-homme"
+        ]
     }
 ]
