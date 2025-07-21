@@ -3,7 +3,7 @@ import json
 import re
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
-from genAI import llm
+from genAI import llm, perfume_description
 from notes_embed import load_embeddings, find_closest_note
 from input_collector import collect_user_input, json_append
 import warnings
@@ -169,3 +169,11 @@ def find_notes(perfume_names):
             
     driver.close()
     return results
+
+def find_descriptions(perfumes):
+    descriptions = {}
+    for p in perfumes.keys():
+        desc = perfume_description(p, perfumes[p])
+        descriptions[p] = desc if isinstance(desc, str) else "No description available."
+        print(p+": "+desc)
+    return descriptions

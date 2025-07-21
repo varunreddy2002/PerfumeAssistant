@@ -55,8 +55,7 @@
 # if __name__ == '__main__':
 #     app.run(debug=True)
 from flask import Flask, render_template, request, redirect, url_for, session
-from main import find_rec, find_notes
-from genAI import perfume_description
+from main import find_rec, find_notes, find_descriptions
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -102,6 +101,7 @@ def results():
     perfumes = session['perfumes']
     selected_perfume = perfumes[0] if perfumes else None
     notes = session['notes']
+    descriptions = find_descriptions(notes)
 
     return render_template(
         'result.html',
@@ -113,26 +113,28 @@ def results():
         top_notes=notes.get(selected_perfume, [])[0] if selected_perfume else [],
         middle_notes=notes.get(selected_perfume, [])[1] if selected_perfume else [],
         base_notes=notes.get(selected_perfume, [])[2] if selected_perfume else [],
-        all_notes=notes
+        perfume_description=descriptions.get(selected_perfume) if selected_perfume else '',
+        all_notes=notes,
+        descriptions = descriptions
     )
 
 # ✅ New route to handle individual perfume detail pages
-@app.route('/perfume/<perfume_name>')
-def perfume_detail(perfume_name):
-    if 'notes' not in session or 'username' not in session:
-        return redirect(url_for('chat'))
+# @app.route('/perfume/<perfume_name>')
+# def perfume_detail(perfume_name):
+#     if 'notes' not in session or 'username' not in session:
+#         return redirect(url_for('chat'))
 
-    notes = session['notes']
-    top, middle, base = notes.get(perfume_name, ([], [], []))
+#     notes = session['notes']
+#     top, middle, base = notes.get(perfume_name, ([], [], []))
 
-    return render_template(
-        'perfume_detail.html',  # make sure this template exists!
-        perfume_name=perfume_name,
-        top_notes=top,
-        middle_notes=middle,
-        base_notes=base,
-        username=session['username']
-    )
+#     return render_template(
+#         'perfume_detail.html',  # make sure this template exists!
+#         perfume_name=perfume_name,
+#         top_notes=top,
+#         middle_notes=middle,
+#         base_notes=base,
+#         username=session['username']
+#     )
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -38,12 +38,12 @@ def llm(prompt, past_perfume):
     )
     return response.text
 
-def perfume_description(prompt, t_notes,m_notes,b_notes):
+def perfume_description(prompt, notes):
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents= f"""
-        Write a verbose description of the perfume {prompt}, considering that it has the top notes {t_notes},
-        the middle notes {m_notes}, and the base notes {b_notes}.  Write at least 3 sentences and at most 5.
+        Write a verbose description of the perfume {prompt}, considering that it has the top notes {notes[0]},
+        the middle notes {notes[1]}, and the base notes {notes[2]}.  Write at least 3 sentences and at most 5.
         """
         ,
     )

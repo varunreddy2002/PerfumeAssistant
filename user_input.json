@@ -169,5 +169,55 @@
             "sr-n-cedro",
             "lapidus-pour-homme-gold-extreme"
         ]
+    },
+    {
+        "username": "tester",
+        "prompt": "bobbington the third",
+        "Recommended_Perfumes": [
+            "acqua-di-colonia-lavanda",
+            "dubai-garnet",
+            "oscar",
+            "cuba-prestige"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Deep Sea Perfume",
+        "Recommended_Perfumes": [
+            "ehsas",
+            "seemann-intense",
+            "l-eau-majeure-d-issey-shade-of-sea",
+            "chant-d-extase"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Deep Sea Perfume",
+        "Recommended_Perfumes": [
+            "sydney-rock-pool",
+            "summer-white-maldives",
+            "icon-racing-blue",
+            "wave-musk"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Deep Sea Perfume",
+        "Recommended_Perfumes": [
+            "ehsas",
+            "brun",
+            "mr-burberry-element",
+            "super-nova"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Viva la Revolution",
+        "Recommended_Perfumes": [
+            "thurible",
+            "comme-des-garcons-x-undercover-holygrapie",
+            "vi-et-armis",
+            "fig-extasy"
+        ]
     }
 ]
