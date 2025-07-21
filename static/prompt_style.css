@@ -423,3 +423,20 @@ body.prompt-page {
   margin-top: 1rem;
   text-align: center;
 }
+
+.selected-description-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.description-image img {
+  width: 100px; /* or whatever size you want */
+  height: auto;
+  border-radius: 8px;
+}
+
+.description-text {
+  flex: 1;
+}

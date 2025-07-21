@@ -118,23 +118,5 @@ def results():
         descriptions = descriptions
     )
 
-# ✅ New route to handle individual perfume detail pages
-# @app.route('/perfume/<perfume_name>')
-# def perfume_detail(perfume_name):
-#     if 'notes' not in session or 'username' not in session:
-#         return redirect(url_for('chat'))
-
-#     notes = session['notes']
-#     top, middle, base = notes.get(perfume_name, ([], [], []))
-
-#     return render_template(
-#         'perfume_detail.html',  # make sure this template exists!
-#         perfume_name=perfume_name,
-#         top_notes=top,
-#         middle_notes=middle,
-#         base_notes=base,
-#         username=session['username']
-#     )
-
 if __name__ == '__main__':
     app.run(debug=True)

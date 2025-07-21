@@ -18,11 +18,17 @@
   </script>
 
   <div class="container">
-    <h2>Welcome, {{ username }}!</h2>
-    <div class="selected-description">
-      <h4>Description</h4>
-      <p id="perfume-description-text">Click a perfume to view its description.</p>
+    <div class="selected-description-container">
+      <div class="description-image">
+        <img id="perfume-description-image" src="{{ url_for('static', filename='images/default.png') }}"
+          alt="Perfume image" />
+      </div>
+      <div class="description-text">
+        <h4>Description</h4>
+        <p id="perfume-description-text">Click a perfume to view its description.</p>
+      </div>
     </div>
+
 
 
     {% if perfumes %}
@@ -93,8 +99,17 @@
       updateNoteList('middle-notes-list', notes[1]);
       updateNoteList('base-notes-list', notes[2]);
 
-      const description = perfumeDescriptions[perfumeName] || "No description available.";
-      descriptionText.textContent = description;
+      // const description = perfumeDescriptions[perfumeName] || "No description available.";
+      // descriptionText.textContent = description;
+      const descriptionData = perfumeDescriptions[perfumeName];
+      if (descriptionData) {
+        const [desc, imgPath] = descriptionData;
+        descriptionText.textContent = desc;
+        document.getElementById('perfume-description-image').src = '/'+imgPath;
+      } else {
+        descriptionText.textContent = "No description available.";
+        document.getElementById('perfume-description-image').src = "{{ url_for('static', filename='images/default.png') }}";
+      }
     }
 
     document.getElementById('backButton').onclick = () => {

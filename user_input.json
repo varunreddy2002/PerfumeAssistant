@@ -219,5 +219,65 @@
             "vi-et-armis",
             "fig-extasy"
         ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Aquaman",
+        "Recommended_Perfumes": [
+            "ehsas",
+            "l-eau-majeure-d-issey-shade-of-sea",
+            "frenchy-lavande",
+            "tubereuse-indiana"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Aquaman",
+        "Recommended_Perfumes": [
+            "ehsas",
+            "l-eau-majeure-d-issey-shade-of-sea",
+            "spirito-fiorentino",
+            "brun"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Batman",
+        "Recommended_Perfumes": [
+            "a-men-pure-leather-pure-cuir",
+            "fucking-fabulous",
+            "magna",
+            "ch-insignia"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Batman",
+        "Recommended_Perfumes": [
+            "bois-d-ombrie",
+            "cuir-imperial",
+            "ubar-1992",
+            "nuit-d-issey"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "John Constantine",
+        "Recommended_Perfumes": [
+            "a-men-pure-leather-pure-cuir",
+            "cuir-imperial",
+            "ch-insignia",
+            "bois-d-ombrie"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "Owlman",
+        "Recommended_Perfumes": [
+            "a-men-pure-leather-pure-cuir",
+            "cuir-imperial",
+            "ch-insignia",
+            "bois-d-ombrie"
+        ]
     }
 ]
