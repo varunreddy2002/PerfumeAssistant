@@ -9,6 +9,10 @@
 <body class="prompt-page">
   <button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
 
+    <script id="perfume-notes-data" type="application/json">
+      {{ all_notes | tojson | safe }}
+    </script>
+
   <div class="container">
     <h2>Welcome, {{ username }}!</h2>
     <div class="user-prompt">
@@ -53,12 +57,12 @@
         };
 
         // Assign selectedPerfume from Flask variable (JS string literal)
-        // const selectedPerfume = {{ selected_perfume | default('""') | tojson }};
+        const selectedPerfume = {{ selected_perfume | default('""') | tojson }};
 
 
         // Immediately call showNotes if selectedPerfume is set
-        if (selectedperfume) {
-            showNotes(selectedperfume);
+        if (selectedPerfume) {
+            showNotes(selectedPerfume);
         }
 
     </script>
@@ -105,10 +109,6 @@
         <ul id="base-notes-list"></ul>
       </div>
     </div>
-
-    <script id="perfume-notes-data" type="application/json">
-      {{ all_notes | tojson | safe }}
-    </script>
 
     <!-- <script> -->
     <!-- //   const perfumeNotes = JSON.parse(document.getElementById('perfume-notes-data').textContent);
