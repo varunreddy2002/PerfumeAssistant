@@ -66,9 +66,28 @@
     {% if perfumes %}
     <div class="perfume-buttons">
       <h4>View Notes For:</h4>
-      {% for perfume in perfumes %}
-      <button class="perfume-button" onclick="showNotes('{{ perfume }}')">{{ perfume }}</button>
-      {% endfor %}
+      <div class="perfume-card-grid">
+  {% for perfume in perfumes %}
+  <a href="{{ url_for('perfume_detail', perfume_name=perfume) }}" class="perfume-card">
+    <div class="perfume-image">
+      <!-- Replace src with generated image URL if available -->
+      <img src="{{ url_for('static', filename='company.png') }}" alt="{{ perfume }}">
+    </div>
+    <div class="perfume-info">
+      <h4 class="perfume-name">{{ perfume }}</h4>
+      <div class="top-notes-preview">
+        {% for note in all_notes[perfume][0][:3] %}
+        <span class="note-chip">{{ note }}</span>
+        {% endfor %}
+        {% if all_notes[perfume][0]|length > 3 %}
+        <span class="note-chip">+{{ all_notes[perfume][0]|length - 3 }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
     </div>
     {% endif %}
 

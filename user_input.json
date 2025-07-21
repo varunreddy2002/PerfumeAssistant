@@ -119,5 +119,15 @@
             "la-vie-est-belle-iris-absolu",
             "police-potion-power-for-him"
         ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "I want a strong cologne for the evening with sandalwood and vanilla",
+        "Recommended_Perfumes": [
+            "gold",
+            "durra",
+            "vanilla-marble",
+            "vanille-eau-de-parfum"
+        ]
     }
 ]
