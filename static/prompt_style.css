@@ -351,71 +351,75 @@ body.prompt-page {
   border-radius: 12px;
 }
 
-/* Loading overlay */
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 250, 240, 0.9);
+.bottle-row {
   display: flex;
-  flex-direction: column;
+  gap: 20px;
   justify-content: center;
-  align-items: center;
-  z-index: 999;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.2rem;
-  color: #333;
+  margin-top: 1rem;
 }
 
-/* Perfume bottle float */
-.perfume-animation svg {
-  animation: floatBottle 3s ease-in-out infinite;
+.bottle {
+  font-size: 50px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInBounce 0.6s forwards;
+  animation-fill-mode: forwards;
 }
 
-/* Spray mist animation */
-#sprayMist .mistParticle {
-  animation: mistRise 1.8s ease-in-out infinite;
-  transform-origin: center bottom;
-  opacity: 0.7;
-}
+/* Each bottle fades in and bounces up one by one */
+.bottle:nth-child(1) { animation-delay: 0s, 0.6s; }
+.bottle:nth-child(2) { animation-delay: 0.3s, 0.9s; }
+.bottle:nth-child(3) { animation-delay: 0.6s, 1.2s; }
+.bottle:nth-child(4) { animation-delay: 0.9s, 1.5s; }
+.bottle:nth-child(5) { animation-delay: 1.2s, 1.8s; }
 
-#sprayMist .mistParticle:nth-child(1) {
-  animation-delay: 0s;
-}
-#sprayMist .mistParticle:nth-child(2) {
-  animation-delay: 0.2s;
-}
-#sprayMist .mistParticle:nth-child(3) {
-  animation-delay: 0.4s;
-}
-#sprayMist .mistParticle:nth-child(4) {
-  animation-delay: 0.6s;
-}
-#sprayMist .mistParticle:nth-child(5) {
-  animation-delay: 0.8s;
-}
-
-@keyframes mistRise {
+/* Initial fade in and bounce up */
+@keyframes fadeInBounce {
   0% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.7;
+    opacity: 0;
+    transform: translateY(20px);
   }
   50% {
     opacity: 1;
+    transform: translateY(-10px);
   }
   100% {
-    transform: translateY(-40px) scale(0.8);
-    opacity: 0;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes floatBottle {
+/* Continuous subtle bounce */
+@keyframes subtleBounce {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
+}
+
+/* After fadeInBounce completes, start infinite subtle bounce */
+.bottle {
+  animation-name: fadeInBounce, subtleBounce;
+  animation-duration: 0.6s, 2s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-fill-mode: forwards, infinite;
+  animation-iteration-count: 1, infinite;
+  animation-delay: var(--fade-delay), calc(var(--fade-delay) + 0.6s);
+}
+
+/* Use CSS variables to assign delay per bottle */
+.bottle:nth-child(1) { --fade-delay: 0s; }
+.bottle:nth-child(2) { --fade-delay: 0.3s; }
+.bottle:nth-child(3) { --fade-delay: 0.6s; }
+.bottle:nth-child(4) { --fade-delay: 0.9s; }
+.bottle:nth-child(5) { --fade-delay: 1.2s; }
+
+.loading-text {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: center;
 }
