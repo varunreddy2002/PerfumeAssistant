@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ perfume_name }} Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='prompt_style.css') }}">
+</head>
+<body class="prompt-page">
+
+  <a href="{{ url_for('results') }}" class="send-button">← Back to Results</a>
+
+  <h2>{{ perfume_name }}</h2>
+
+  <div class="scent-pyramid">
+    <div class="note-box top-notes">
+      <h4>Top Notes</h4>
+      <ul>
+        {% for note in top_notes %}
+        <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="note-box middle-notes">
+      <h4>Middle Notes</h4>
+      <ul>
+        {% for note in middle_notes %}
+        <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="note-box base-notes">
+      <h4>Base Notes</h4>
+      <ul>
+        {% for note in base_notes %}
+        <li>{{ note }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
