@@ -129,5 +129,45 @@
             "vanilla-marble",
             "vanille-eau-de-parfum"
         ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "artissima",
+            "dilis-classic-collection-no-8",
+            "armani-code-turquoise-for-women",
+            "1881"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "hello",
+        "Recommended_Perfumes": [
+            "accident-a-la-vanille-paradis-blanc",
+            "dirty-vanilla",
+            "gold",
+            "accident-a-la-vanille-almond-cake-limited-edition"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "artissima",
+            "dilis-classic-collection-no-8",
+            "armani-code-turquoise-for-women",
+            "1881"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "spicy",
+        "Recommended_Perfumes": [
+            "style",
+            "olauna",
+            "sr-n-cedro",
+            "lapidus-pour-homme-gold-extreme"
+        ]
     }
 ]

@@ -5,7 +5,6 @@
  
 # app = Flask(__name__)
 # app.secret_key = 'your_secret_key'
- 
 # @app.route('/', methods=['GET', 'POST'])
 # def login():
 #     if request.method == 'POST':
