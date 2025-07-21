@@ -143,5 +143,63 @@
             });
         }
     </script>
+    <script id="perfume-notes-data" type="application/json">
+        {{ all_notes | tojson | safe }}
+    </script>
+    <div class="scent-pyramid">
+        <div class="note-box top-notes">
+            <h4>Top Notes</h4>
+            <ul id="top-notes-list"></ul>
+        </div>
+        <div class="note-box middle-notes">
+            <h4>Middle Notes</h4>
+            <ul id="middle-notes-list"></ul>
+        </div>
+        <div class="note-box base-notes">
+            <h4>Base Notes</h4>
+            <ul id="base-notes-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        const perfumeNotes = JSON.parse(
+            document.getElementById('perfume-notes-data').textContent
+            );
+        function updateNoteList(listId, notes) {
+            const ul = document.getElementById(listId);
+            ul.innerHTML = '';
+            if (!notes) return;
+            notes.forEach(note => {
+            const li = document.createElement('li');
+            li.textContent = note;
+            ul.appendChild(li);
+            });
+        }
+
+        function showNotes(perfumeName) {
+            const notes = perfumeNotes[perfumeName];
+            if (!notes) return;
+
+            updateNoteList('top-notes-list', notes[0]);
+            updateNoteList('middle-notes-list', notes[1]);
+            updateNoteList('base-notes-list', notes[2]);
+        }
+    </script>
+
+
+    {% if perfumes %}
+    <div class="perfume-buttons">
+        <h4>View Notes For:</h4>
+        {% for perfume in perfumes %}
+        <button 
+            class="perfume-button" 
+            onclick="showNotes('{{ perfume }}')"
+        >
+            {{ perfume }}
+        </button>
+        {% endfor %}
+    </div>
+    {% endif %}
+
 </body>
 </html>

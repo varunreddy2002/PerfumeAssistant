@@ -34,5 +34,90 @@
             "lvers",
             "elysium-pour-homme-eau-intense"
         ]
+    },
+    {
+        "username": "eric",
+        "prompt": "Find me a perfurme that is perfect for when I am doing stressful work\r\n",
+        "Recommended_Perfumes": [
+            "oscar",
+            "acqua-di-colonia-lavanda",
+            "sandalwood-neroli",
+            "angel-schlesser-homme"
+        ]
+    },
+    {
+        "username": "t3",
+        "prompt": "glorp",
+        "Recommended_Perfumes": [
+            "olauna",
+            "al-oudh",
+            "woodstock-patchouli",
+            "l-enfant-terrible"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "glorple sleim",
+        "Recommended_Perfumes": []
+    },
+    {
+        "username": "t2",
+        "prompt": "A perfume that makes me feel like I'm on the moon.",
+        "Recommended_Perfumes": [
+            "this-is-not-a-blue-bottle-1-5",
+            "rose-nue",
+            "invisible-touch",
+            "vodka-on-the-rocks"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "give a perfume good for eating pizza",
+        "Recommended_Perfumes": [
+            "christian-lacroix-absynthe-for-him",
+            "sergio-nero-pour-homme",
+            "ginseng-cafeina",
+            "amber-elixir"
+        ]
+    },
+    {
+        "username": "t3",
+        "prompt": "blue",
+        "Recommended_Perfumes": [
+            "nuda-veritas",
+            "casanova",
+            "velours-boise",
+            "midnight-romance"
+        ]
+    },
+    {
+        "username": "t3",
+        "prompt": "pink",
+        "Recommended_Perfumes": [
+            "vert-pivoine",
+            "la-vie-est-belle-en-rose",
+            "wear-love-everywhere",
+            "diabolo-rose"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "Recommend a perfume reminiscent of the sun.",
+        "Recommended_Perfumes": [
+            "pink-lips",
+            "sillage-de-the",
+            "nuda-veritas",
+            "lvers"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "Recommend a perfume reminiscent of the sun.",
+        "Recommended_Perfumes": [
+            "armani-code-turquoise-for-women",
+            "nuda-veritas",
+            "la-vie-est-belle-iris-absolu",
+            "police-potion-power-for-him"
+        ]
     }
 ]

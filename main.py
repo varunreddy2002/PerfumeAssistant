@@ -136,4 +136,36 @@ def find_rec(user_input):
             perfumes.append(record['perfume'])
     user_input["Recommended_Perfumes"] = perfumes
     json_append(user_input)
-    return suggestions
+    return suggestions, perfumes
+
+def find_notes(perfume_names):
+    load_dotenv()
+    URI = os.getenv("NEO4J_URI")
+    USER = os.getenv("NEO4J_USER")
+    PWD = os.getenv("NEO4J_PASSWORD")
+    driver = GraphDatabase.driver(URI, auth=(USER, PWD))
+
+    query = """
+    MATCH (p:Perfume {name: $perfume_name})
+    OPTIONAL MATCH (p)-[:HAS_TOP_NOTE]->(top:Note)
+    OPTIONAL MATCH (p)-[:HAS_MIDDLE_NOTE]->(middle:Note)
+    OPTIONAL MATCH (p)-[:HAS_BASE_NOTE]->(base:Note)
+    RETURN 
+      p.name AS perfume,
+      collect(DISTINCT top.name) AS top_notes,
+      collect(DISTINCT middle.name) AS middle_notes,
+      collect(DISTINCT base.name) AS base_notes
+    """
+
+    results = {}
+    with driver.session() as session:
+        for name in perfume_names:
+            result = session.run(query, perfume_name=name).single()
+            results[result["perfume"]] = [result["top_notes"],result["middle_notes"],result["base_notes"]]
+                # "name": result["perfume"],
+                # "top_notes": result["top_notes"],
+                # "middle_notes": result["middle_notes"],
+                # "base_notes": result["base_notes"],
+            
+    driver.close()
+    return results
