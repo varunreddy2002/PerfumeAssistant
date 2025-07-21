@@ -58,6 +58,7 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
 from main import find_rec, find_notes
+from genAI import perfume_description
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
