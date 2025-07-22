@@ -321,6 +321,7 @@
         ]
     },
     {
+<<<<<<< Updated upstream
         "username": "Reena",
         "prompt": "give me a light whimsical perfume for a day at the beach",
         "Recommended_Perfumes": [
@@ -388,6 +389,45 @@
             "dilis-classic-collection-no-8",
             "armani-code-turquoise-for-women",
             "1881"
+=======
+        "username": "tester",
+        "prompt": "bingus",
+        "Recommended_Perfumes": [
+            "manhattan-light",
+            "my-way-nectar",
+            "lvers",
+            "elysium-pour-homme-eau-intense"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "generate a perfume that I can wear on a sunny day walking around the city.",
+        "Recommended_Perfumes": [
+            "artissima",
+            "century-blue",
+            "l-heure-bleue-100-anniversaire",
+            "icon-racing-blue"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "bobberton the fifth",
+        "Recommended_Perfumes": [
+            "chrome",
+            "chrome-under-the-pole",
+            "angel-schlesser-homme",
+            "serenade"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "poptart",
+        "Recommended_Perfumes": [
+            "accident-a-la-vanille-paradis-blanc",
+            "wish",
+            "gold",
+            "aquavibe-ama-aquavibe-love-now"
+>>>>>>> Stashed changes
         ]
     }
 ]

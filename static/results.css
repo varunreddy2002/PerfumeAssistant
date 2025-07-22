@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto; /* allows full page scrolling */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #f7f7f8;
+    min-height: 100vh;
+    overflow-y:auto;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    padding: 24px;
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding:1rem;
+
+    /* 🔻 Removed white background and box shadow */
+    background-color: transparent;
+    box-shadow: none;
+    height: auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+form#prompt-form {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto 20px auto;
+}
+
+form#prompt-form textarea {
+    width: 100%;
+    height: 160px;
+    padding: 16px 60px 16px 16px;
+    resize: none;
+    overflow-y: auto;
+    font-size: 15px;
+    font-family: inherit;
+    border-radius: 0; /* no rounded edges */
+    border: 1px solid #ccc;
+    line-height: 1.5;
+    outline: none;
+    box-sizing: border-box;
+    background-color: white;
+
+    /* Add subtle shadow here */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* On hover and focus, change border color and shadow */
+form#prompt-form textarea:hover,
+form#prompt-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px 3px rgba(0, 123, 255, 0.3);
+}
+
+
+/* send button */
+form#prompt-form button {
+    display: block;
+    margin: 12px auto 0 auto;
+    padding: 10px 24px;
+    border: 1px solid #ccc;
+    background-color: #007bff;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form#prompt-form button:hover {
+    background-color: #0056b3;
+}
+
+body.prompt-page {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  font-family: 'Nunito Sans', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white; /* fallback */
+}
+
+/* The animated gradient background used ONLY in the loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(270deg, #0ea37f, #3b82f6, #10a37f, #2563eb);
+  background-size: 800% 800%;
+  animation: gradientWave 20s ease infinite;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Animated gradient background */
+@keyframes gradientWave {
+  0% {
+    background-position: 10% 50%;
+  }
+  50% {
+    background-position: 90% 50%;
+  }
+  100% {
+    background-position: 10% 50%;
+  }
+}
+
+/* Remove old spinner styles - not used anymore */
+/* .loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+} */
+
+/* Bottle float animation */
+.perfume-animation svg {
+  animation: floatBottle 3s ease-in-out infinite;
+}
+
+/* Spray mist animation */
+.perfume-animation {
+  margin-bottom: 12px; /* space below bottle and text */
+}
+
+.perfume-animation svg {
+  width: 60px;           /* smaller width */
+  height: 90px;          /* smaller height */
+  animation: floatBottle 3s ease-in-out infinite;
+  overflow: visible;     /* ensure spray mist isn't clipped */
+}
+
+/* Spray mist animation */
+#sprayMist .mistParticle {
+  animation: mistRise 1.8s ease-in-out infinite;
+  transform-origin: center bottom;
+  opacity: 0.7;
+}
+
+#sprayMist .mistParticle:nth-child(1) {
+  animation-delay: 0s;
+}
+#sprayMist .mistParticle:nth-child(2) {
+  animation-delay: 0.3s;
+}
+#sprayMist .mistParticle:nth-child(3) {
+  animation-delay: 0.6s;
+}
+#sprayMist .mistParticle:nth-child(4) {
+  animation-delay: 0.9s;
+}
+#sprayMist .mistParticle:nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+@keyframes mistRise {
+  0% {
+    opacity: 0.7;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-25px) scale(1.4);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatBottle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+#backButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10000;
+}
+.send-button {
+  padding: 6px 16px;  /* smaller vertical and horizontal padding */
+  border: 1px solid #ccc;
+  background-color: #007bff;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  font-family:'Nunito Sans', sans-serif; ;
+  text-align: center;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+.scent-pyramid {
+  position: fixed;
+  top: 100px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10;
+  max-width: 200px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.note-box {
+  background: #f3f4f6;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.note-box h4 {
+  margin: 0 0 8px;
+  font-weight: 600;
+  text-align: center;
+  color: #1e3a8a;
+}
+
+.note-box ul {
+  margin: 0;
+  padding-left: 18px;
+  list-style-type: disc;
+}
+
+.note-box li {
+  font-size: 14px;
+  color: #374151;
+}
+
+.perfume-buttons {
+  margin-top: 2rem;
+  width: 100%;
+  max-height: none;
+  margin-top:2rem;
+  overflow-y: visible;
+  padding: 16px 0;
+  border-top: 1px solid #ccc;
+}
+
+/* .perfume-button {
+  margin: 6px;
+  padding: 10px 18px;
+  font-size: 14px;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+} */
+
+.perfume-button:hover {
+  background-color: #1e40af;
+}
+
+.perfume-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width:100%;
+  margin-top:1rem;
+  justify-content: center;
+  padding: 16px;
+}
+
+.perfume-card {
+  width: 200px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfume-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.perfume-image img {
+  max-width: 100%;
+  width:450px;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.perfume-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.perfume-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 8px 0;
+}
+
+.top-notes-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.note-chip {
+  background-color: #e0e0e0;
+  color: #333;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.bottle-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.bottle {
+  font-size: 50px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInBounce 0.6s forwards;
+  animation-fill-mode: forwards;
+}
+
+/* Each bottle fades in and bounces up one by one */
+.bottle:nth-child(1) { animation-delay: 0s, 0.6s; }
+.bottle:nth-child(2) { animation-delay: 0.3s, 0.9s; }
+.bottle:nth-child(3) { animation-delay: 0.6s, 1.2s; }
+.bottle:nth-child(4) { animation-delay: 0.9s, 1.5s; }
+.bottle:nth-child(5) { animation-delay: 1.2s, 1.8s; }
+
+/* Initial fade in and bounce up */
+@keyframes fadeInBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Continuous subtle bounce */
+@keyframes subtleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* After fadeInBounce completes, start infinite subtle bounce */
+.bottle {
+  animation-name: fadeInBounce, subtleBounce;
+  animation-duration: 0.6s, 2s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-fill-mode: forwards, infinite;
+  animation-iteration-count: 1, infinite;
+  animation-delay: var(--fade-delay), calc(var(--fade-delay) + 0.6s);
+}
+
+/* Use CSS variables to assign delay per bottle */
+.bottle:nth-child(1) { --fade-delay: 0s; }
+.bottle:nth-child(2) { --fade-delay: 0.3s; }
+.bottle:nth-child(3) { --fade-delay: 0.6s; }
+.bottle:nth-child(4) { --fade-delay: 0.9s; }
+.bottle:nth-child(5) { --fade-delay: 1.2s; }
+
+.loading-text {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.description-image img {
+  width: 500px; /* or whatever size you want */
+  height: auto;
+  border-radius: 8px;
+}
+
+.description-text {
+  flex: 1;
+}
+
+.description-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.description-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.image-col img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+}
+
+.text-col {
+  padding: 0 16px;
+}
+
+.notes-col {
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

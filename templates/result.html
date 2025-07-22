@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Recommendations</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='prompt_style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}" />
 </head>
 <body class="prompt-page">
   <button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
@@ -18,16 +18,33 @@
   </script>
 
   <div class="container">
-    <div class="selected-description-container">
-      <div class="description-image">
+    <div class="description-layout">
+      <div class="description-column image-col">
         <img id="perfume-description-image" src="{{ url_for('static', filename='images/default.png') }}"
-          alt="Perfume image" width = 500/>
+          alt="Perfume image" />
       </div>
-      <div class="description-text">
+
+      <div class="description-column text-col">
         <h4>Description</h4>
         <p id="perfume-description-text">Click a perfume to view its description.</p>
       </div>
+
+      <div class="description-column notes-col">
+        <div class="note-box top-notes">
+          <h4>Top Notes</h4>
+          <ul id="top-notes-list"></ul>
+        </div>
+        <div class="note-box middle-notes">
+          <h4>Middle Notes</h4>
+          <ul id="middle-notes-list"></ul>
+        </div>
+        <div class="note-box base-notes">
+          <h4>Base Notes</h4>
+          <ul id="base-notes-list"></ul>
+        </div>
+      </div>
     </div>
+
 
 
 
@@ -57,24 +74,6 @@
     </div>
     {% endif %}
 
-    <div class="scent-pyramid">
-      <div class="note-box top-notes">
-        <h4>Top Notes</h4>
-        <ul id="top-notes-list"></ul>
-      </div>
-
-      <div class="note-box middle-notes">
-        <h4>Middle Notes</h4>
-        <ul id="middle-notes-list"></ul>
-      </div>
-
-      <div class="note-box base-notes">
-        <h4>Base Notes</h4>
-        <ul id="base-notes-list"></ul>
-      </div>
-    </div>
-  </div>
-
   <script>
     const perfumeNotes = JSON.parse(document.getElementById('perfume-notes-data').textContent);
     const perfumeDescriptions = JSON.parse(document.getElementById('perfume-descriptions-data').textContent);
@@ -95,9 +94,9 @@
     function showNotes(perfumeName) {
       const notes = perfumeNotes[perfumeName];
       if (!notes) return;
-      updateNoteList('top-notes-list', notes[0]);
-      updateNoteList('middle-notes-list', notes[1]);
-      updateNoteList('base-notes-list', notes[2]);
+      updateNoteList('top-notes-list', notes[0].slice(0,6));
+      updateNoteList('middle-notes-list', notes[1].slice(0,6));
+      updateNoteList('base-notes-list', notes[2].slice(0,6));
 
       // const description = perfumeDescriptions[perfumeName] || "No description available.";
       // descriptionText.textContent = description;
