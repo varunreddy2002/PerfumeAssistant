@@ -10,7 +10,7 @@ def generate_image(text, name, folder="static/images"):
     client = genai.Client(api_key=api_k)
 
     # TODO(developer): Update and un-comment below line
-    output_file = folder+name+".png"
+    output_file = folder+"/"+name+".png"
 
 
     image = client.models.generate_images(

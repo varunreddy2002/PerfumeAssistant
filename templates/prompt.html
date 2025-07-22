@@ -11,6 +11,8 @@
 
   <div class="container">
     <h2>Welcome, {{ username }}!</h2>
+    <img src="{{ url_for('static', filename='Dahlia.png') }}" alt="Dahlia Flower" class="dahlia-inside" />
+
     <form method="post" id="prompt-form">
       <textarea
         name="user_input"
@@ -18,28 +20,21 @@
         required
       ></textarea>
 
-      <button type="submit" aria-label="Submit" id="sendButton">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="19" x2="12" y2="5"></line>
-          <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
-      </button>
-    </form>
+     <button type="submit" aria-label="Submit" id="sendButton">
+  GENERATE
+</button>
+
+
+  <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+    <span class="loading-text">SCENTIFY IS BREWING YOUR MATCH...</span>
+    <div class="perfume-animation bottle-row">
+      <div class="bottle">🌸</div>
+      <div class="bottle">🌿</div>
+      <div class="bottle">🌷</div>
+      <div class="bottle">💧</div>
+      <div class="bottle">✨</div>
+    </div>
   </div>
-
- <div class="loading-overlay" id="loadingOverlay" style="display: none;">
-  <span class="loading-text">Scentify is brewing your match...</span>
-  <div class="perfume-animation bottle-row">
-    <div class="bottle">🌸</div>
-    <div class="bottle">🌿</div>
-    <div class="bottle">🌷</div>
-    <div class="bottle">💧</div>
-    <div class="bottle">✨</div>
-  </div>
-</div>
-
-
 
   <script>
     document.getElementById('backButton').onclick = () => {
@@ -55,3 +50,28 @@
   </script>
 </body>
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('prompt-form');
+    const textarea = form.querySelector("textarea");
+
+    textarea.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // prevent newline
+        form.requestSubmit(); // submit the form programmatically
+      }
+    });
+
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    form.addEventListener('submit', () => {
+      form.querySelector("button[type='submit']").disabled = true;
+      loadingOverlay.style.display = 'flex';
+      document.getElementById('backButton').style.display = 'none';
+    });
+
+    document.getElementById('backButton').onclick = () => {
+      window.location.href = "{{ url_for('login') }}";
+    };
+  });
+</script>

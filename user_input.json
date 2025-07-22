@@ -319,5 +319,75 @@
             "oscar",
             "wear-love-everywhere"
         ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a light whimsical perfume for a day at the beach",
+        "Recommended_Perfumes": [
+            "premier-jour-soleil",
+            "coco-extreme",
+            "sorbetto-rosso",
+            "sydney-rock-pool"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "Give me a floral perfume with notes of vanilla and cherry",
+        "Recommended_Perfumes": [
+            "cerise-exquise",
+            "accident-a-la-vanille-paradis-blanc",
+            "gold",
+            "accident-a-la-vanille-almond-cake-limited-edition"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a floral prfume with cherry and vanilla",
+        "Recommended_Perfumes": [
+            "cerise-exquise",
+            "accident-a-la-vanille-paradis-blanc",
+            "gold",
+            "accident-a-la-vanille-almond-cake-limited-edition"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a floral perfume",
+        "Recommended_Perfumes": [
+            "armani-code-turquoise-for-women",
+            "gold",
+            "devilish-passion",
+            "accident-a-la-vanille-paradis-blanc"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a floral perfume",
+        "Recommended_Perfumes": [
+            "gold",
+            "armani-code-turquoise-for-women",
+            "lily-lumiere",
+            "le-temps-des-secrets"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a floral perfume",
+        "Recommended_Perfumes": [
+            "passion",
+            "gold",
+            "tubereuse-de-madras",
+            "amarige"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a floral perfume",
+        "Recommended_Perfumes": [
+            "artissima",
+            "dilis-classic-collection-no-8",
+            "armani-code-turquoise-for-women",
+            "1881"
+        ]
     }
 ]

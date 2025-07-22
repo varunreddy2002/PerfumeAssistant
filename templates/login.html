@@ -6,27 +6,37 @@
   <title>Scentify Login</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Bigger Dahlia image inside the form */
+    .dahlia-inside {
+      width: 140px;
+      margin: 16px auto 24px auto;
+      display: block;
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body class="login-page">
 
- <!-- Branded Logo in Top-Left -->
-<div class="logo-container">
+  <!-- Branded Logo in Top-Left -->
+  <div class="logo-container">
     <img src="{{ url_for('static', filename='company.png') }}" alt="Company Logo" class="company-logo">
-</div>
-
-
+  </div>
 
   <form method="POST" class="login-form">
     <h1 class="welcome-header">Welcome to Scentify</h1>
+
+    <!-- 🌸 Larger flower image under welcome header -->
+    <img src="{{ url_for('static', filename='Dahlia.png') }}" alt="Dahlia Flower" class="dahlia-inside" />
+
     <p class="login-subtext">
       Discover your perfect scent through a personalized journey of preferences and inspirations, powered by IFF’s fragrance expertise.
     </p>
-    <label for="username">Username</label><br>
+    
     <input type="text" id="username" name="username" placeholder="Enter your name" required />
     <button type="submit" class="login-button">Continue</button>
   </form>
 
 </body>
 </html>
-
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
