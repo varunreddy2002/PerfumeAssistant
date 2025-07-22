@@ -21,7 +21,7 @@
     <div class="selected-description-container">
       <div class="description-image">
         <img id="perfume-description-image" src="{{ url_for('static', filename='images/default.png') }}"
-          alt="Perfume image" />
+          alt="Perfume image" width = 500/>
       </div>
       <div class="description-text">
         <h4>Description</h4>
@@ -38,7 +38,7 @@
         {% for perfume in perfumes %}
         <div class="perfume-card" onclick="showNotes('{{ perfume }}')">
           <div class="perfume-image">
-            <img src="{{ url_for('static', filename='company.png') }}" alt="{{ perfume }}">
+            <img src="{{ descriptions[perfume][1] }}" alt="{{ perfume }}">
           </div>
           <div class="perfume-info">
             <h4 class="perfume-name">{{ perfume }}</h4>
@@ -105,7 +105,7 @@
       if (descriptionData) {
         const [desc, imgPath] = descriptionData;
         descriptionText.textContent = desc;
-        document.getElementById('perfume-description-image').src = '/'+imgPath;
+        document.getElementById('perfume-description-image').src = imgPath;
       } else {
         descriptionText.textContent = "No description available.";
         document.getElementById('perfume-description-image').src = "{{ url_for('static', filename='images/default.png') }}";

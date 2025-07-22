@@ -279,5 +279,45 @@
             "ch-insignia",
             "bois-d-ombrie"
         ]
+    },
+    {
+        "username": "t2",
+        "prompt": "Batman",
+        "Recommended_Perfumes": [
+            "a-men-pure-leather-pure-cuir",
+            "cuir-imperial",
+            "ch-insignia",
+            "bois-d-ombrie"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "Superman",
+        "Recommended_Perfumes": [
+            "elysium-pour-homme-eau-intense",
+            "granada",
+            "theseus",
+            "mystery-excellence"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "fishman",
+        "Recommended_Perfumes": [
+            "sydney-rock-pool",
+            "summer-white-maldives",
+            "icon-racing-blue",
+            "wave-musk"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "Give me a floral perfume with rose and lavender. ",
+        "Recommended_Perfumes": [
+            "edge",
+            "romance",
+            "oscar",
+            "wear-love-everywhere"
+        ]
     }
 ]

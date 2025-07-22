@@ -10,7 +10,7 @@ def generate_image(text, name, folder="static/images"):
     client = genai.Client(api_key=api_k)
 
     # TODO(developer): Update and un-comment below line
-    output_file = os.path.join(folder, f"{name}.png")
+    output_file = folder+name+".png"
 
 
     image = client.models.generate_images(
@@ -22,7 +22,7 @@ def generate_image(text, name, folder="static/images"):
     image.generated_images[0].image.save(output_file)
 
     print(f"Created output image using {len(image.generated_images[0].image.image_bytes)} bytes")
-    return output_file
+    return "/"+output_file
     # Example response:
     # Created output image using 1234567 bytes
 
