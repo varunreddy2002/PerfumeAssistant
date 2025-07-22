@@ -8,5 +8,35 @@
             "urma-vie-extrait-de-ceaslov",
             "noir-patchouli"
         ]
+    },
+    {
+        "username": "tester",
+        "prompt": "pluto",
+        "Recommended_Perfumes": [
+            "evening-mystique",
+            "porpora",
+            "bois-d-ombrie",
+            "infinitoud"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "pluto",
+        "Recommended_Perfumes": [
+            "evening-mystique",
+            "bois-d-ombrie",
+            "porpora",
+            "al-oudh"
+        ]
+    },
+    {
+        "username": "t3",
+        "prompt": "topological chart of mars",
+        "Recommended_Perfumes": [
+            "prada-la-femme-water-splash",
+            "platinum-rush",
+            "athina",
+            "vert-envolee"
+        ]
     }
 ]

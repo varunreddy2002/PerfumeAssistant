@@ -307,16 +307,16 @@ body.prompt-page {
 
 .perfume-card-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, 1fr);    /* 2 rows */
   gap: 1.5rem;
-  width:100%;
-  margin-top:1rem;
-  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
   padding: 16px;
 }
-
+ 
 .perfume-card {
-  width: 200px;
+  width: 100%; /* Full width inside grid cell */
   text-decoration: none;
   border: 1px solid #ddd;
   border-radius: 12px;

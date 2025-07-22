@@ -72,12 +72,12 @@
       </div>
     </div>
     {% endif %}
-
+<button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
   <script>
+    const selectedPerfume = {{ perfumes[0] | tojson }};
     const perfumeNotes = JSON.parse(document.getElementById('perfume-notes-data').textContent);
     const perfumeDescriptions = JSON.parse(document.getElementById('perfume-descriptions-data').textContent);
     const descriptionText = document.getElementById('perfume-description-text');
-
 
     function updateNoteList(listId, notes) {
       const ul = document.getElementById(listId);
@@ -93,12 +93,10 @@
     function showNotes(perfumeName) {
       const notes = perfumeNotes[perfumeName];
       if (!notes) return;
-      updateNoteList('top-notes-list', notes[0].slice(0,6));
-      updateNoteList('middle-notes-list', notes[1].slice(0,6));
-      updateNoteList('base-notes-list', notes[2].slice(0,6));
+      updateNoteList('top-notes-list', notes[0].slice(0, 6));
+      updateNoteList('middle-notes-list', notes[1].slice(0, 6));
+      updateNoteList('base-notes-list', notes[2].slice(0, 6));
 
-      // const description = perfumeDescriptions[perfumeName] || "No description available.";
-      // descriptionText.textContent = description;
       const descriptionData = perfumeDescriptions[perfumeName];
       if (descriptionData) {
         const [desc, imgPath] = descriptionData;
@@ -114,11 +112,13 @@
       window.location.href = "{{ url_for('chat') }}";
     };
 
-    const selectedPerfume = {{ selected_perfume | default('""') | tojson }};
-    if (selectedPerfume) {
-      showNotes(selectedPerfume);
-    }
+    // Auto-load the first perfume on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      if (selectedPerfume) {
+        showNotes(selectedPerfume);
+      }
+    });
   </script>
-<button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
+
 </body>
 </html>
