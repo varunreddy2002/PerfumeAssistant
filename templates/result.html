@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}" />
 </head>
 <body class="prompt-page">
-  <button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
 
   <script id="perfume-notes-data" type="application/json">
     {{ all_notes | tojson | safe }}
@@ -120,5 +119,6 @@
       showNotes(selectedPerfume);
     }
   </script>
+<button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
 </body>
 </html>
