@@ -504,3 +504,35 @@ body.prompt-page {
   flex-direction: column;
   gap: 16px;
 }
+
+.like-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.like-button {
+  background-color: #007BFF; /* blue */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.like-button:hover {
+  background-color: #0056b3;
+}
+
+.like-button.liked {
+  background-color: #0056b3; /* green */
+  color: white;
+}
+
+.like-button.liked:hover {
+  background-color: #007BFF;
+}

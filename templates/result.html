@@ -21,11 +21,11 @@
   </h2>
   <div class="container">
     <div class="description-layout">
+      
       <div class="description-column image-col">
         <img id="perfume-description-image" src="{{ url_for('static', filename='images/default.png') }}"
           alt="Perfume image" />
       </div>
-
       <div class="description-column text-col">
         <h4>{{selectedPerfume}}</h4>
         <p id="perfume-description-text">Click a perfume to view its description.</p>
@@ -46,8 +46,29 @@
         </div>
       </div>
     </div>
+      <div class="like-button-wrapper">
+  <button type="button" id="likeButton" class="like-button" aria-pressed="false" aria-label="Like this scent">
+    Like This Scent
+  </button>
+</div>
 
+<script>
+  const likeBtn = document.getElementById('likeButton');
 
+  likeBtn.addEventListener('click', () => {
+    const isLiked = likeBtn.classList.toggle('liked');
+
+    if (isLiked) {
+      likeBtn.textContent = 'Liked ✓';
+      likeBtn.setAttribute('aria-pressed', 'true');
+      likeBtn.setAttribute('aria-label', 'Unlike this scent');
+    } else {
+      likeBtn.textContent = 'Like This Scent';
+      likeBtn.setAttribute('aria-pressed', 'false');
+      likeBtn.setAttribute('aria-label', 'Like this scent');
+    }
+  });
+</script>
 
 
     {% if perfumes %}
@@ -126,3 +147,4 @@
 
 </body>
 </html>
+

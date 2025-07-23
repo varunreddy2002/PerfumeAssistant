@@ -118,5 +118,35 @@
             "sakura",
             "mystique-femme"
         ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a subtle floral perfume",
+        "Recommended_Perfumes": [
+            "black",
+            "nomade",
+            "mexx-waterlove-woman",
+            "art-ekspresija-art-expression"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a perfume that smells sweet",
+        "Recommended_Perfumes": [
+            "mula-mula-double-caramel",
+            "river-of-love",
+            "oxford-bleu-femme",
+            "voile-confit"
+        ]
+    },
+    {
+        "username": "Reena",
+        "prompt": "give me a strong cologne",
+        "Recommended_Perfumes": [
+            "a-men-pure-leather-pure-cuir",
+            "forever-now-gucci-museo",
+            "midnight",
+            "infinite-seduction-for-her"
+        ]
     }
 ]
