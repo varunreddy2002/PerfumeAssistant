@@ -361,13 +361,16 @@ body.prompt-page {
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
   grid-template-rows: repeat(2, 1fr);    /* 2 rows */
   gap: 1.5rem;
-  width: 100%;
-  margin-top: 1rem;
+  /* Remove full width and center instead */
+  width: max-content;       /* shrink grid to content size */
+  margin: 1rem auto 0;      /* center horizontally, with top margin */
   padding: 16px;
 }
- 
+
+
 .perfume-card {
-  width: 100%; /* Full width inside grid cell */
+  width: 400px;       /* wider width */
+  height: 250px;      /* shorter height */
   text-decoration: none;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -375,13 +378,37 @@ body.prompt-page {
   transition: box-shadow 0.3s ease;
   background-color: #fff;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;  /* horizontal layout */
   align-items: center;
+  box-sizing: border-box;
+  padding: 12px;
+  gap: 16px;           /* space between image and content */
+}
+
+/* Image inside perfume card */
+.perfume-card img {
+  width: 40%;          /* take 40% width of card */
+  height: 100%;        /* full card height */
+  object-fit: cover;   /* maintain aspect ratio, crop if needed */
+  border-radius: 8px;
+  flex-shrink: 0;      /* prevent shrinking */
+  margin: 0;           /* remove margin */
+}
+
+/* Content area inside perfume card */
+.perfume-card .content {
+  width: 60%;          /* remaining width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  color: #333;
 }
 
 .perfume-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 
 .perfume-image img {
   max-width: 100%;

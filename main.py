@@ -114,8 +114,8 @@ def find_descriptions(perfumes):
     descriptions = {}
     for p in perfumes.keys():
         desc = perfume_description(p, perfumes[p])
-        # s = generate_image(f"Generate an image for the perfume {p} with a visual emphasis on the notes {perfumes[p]}.", p)
-        s = ""
+        s = generate_image(f"Generate an image for the perfume {p} with a visual emphasis on the notes {perfumes[p]}.", p)
+        # s = ""
         descriptions[p] = [desc if isinstance(desc, str) else "No description available.", s]
     return descriptions
 
