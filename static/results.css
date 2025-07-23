@@ -533,10 +533,12 @@ body.prompt-page {
   max-width: none;
   height: auto;
   border-radius: 8px;
+  /* margin-left:2vw; */
 }
 
 .text-col {
   /* padding: 0 16px; */
+  margin-left:2vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

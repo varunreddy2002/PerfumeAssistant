@@ -166,5 +166,15 @@
         "username": "Reena",
         "prompt": "Give me a floral perfume for women",
         "Recommended_Perfumes": []
+    },
+    {
+        "username": "test",
+        "prompt": "orange perfume garfield",
+        "Recommended_Perfumes": []
+    },
+    {
+        "username": "tester",
+        "prompt": "curious george",
+        "Recommended_Perfumes": []
     }
 ]
