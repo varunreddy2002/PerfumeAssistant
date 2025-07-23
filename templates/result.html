@@ -82,35 +82,36 @@
         });
       }
     </script>
+  </div>
 
 
 
-    {% if perfumes %}
-    <div class="perfume-buttons">
-      <h4 class="rec_text">Your Perfect Scent Matches</h4>
-      <div class="perfume-card-grid">
-        {% for perfume in perfumes %}
-        <div class="perfume-card" onclick="showNotes('{{ perfume }}')">
-          <div class="perfume-image">
-            <img src="{{ descriptions[perfume][1] }}" alt="{{ perfume }}">
-          </div>
-          <div class="perfume-info">
-            <h4 class="perfume-name">{{ perfume }}</h4>
-            <div class="top-notes-preview">
-              {% for note in all_notes[perfume][0][:3] %}
-              <span class="note-chip">{{ note }}</span>
-              {% endfor %}
-              {% if all_notes[perfume][0]|length > 3 %}
-              <span class="note-chip">+{{ all_notes[perfume][0]|length - 3 }}</span>
-              {% endif %}
-            </div>
+  {% if perfumes %}
+  <div class="perfume-buttons">
+    <h4 class="rec_text">Your Perfect Scent Matches</h4>
+    <div class="perfume-card-grid">
+      {% for perfume in perfumes %}
+      <div class="perfume-card" onclick="showNotes('{{ perfume }}')">
+        <div class="perfume-image">
+          <img src="{{ descriptions[perfume][1] }}" alt="{{ perfume }}">
+        </div>
+        <div class="perfume-info">
+          <h4 class="perfume-name">{{ perfume }}</h4>
+          <div class="top-notes-preview">
+            {% for note in all_notes[perfume][0][:3] %}
+            <span class="note-chip">{{ note }}</span>
+            {% endfor %}
+            {% if all_notes[perfume][0]|length > 3 %}
+            <span class="note-chip">+{{ all_notes[perfume][0]|length - 3 }}</span>
+            {% endif %}
           </div>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
     </div>
-    {% endif %}
-<button type="button" id="backButton" class="send-button" aria-label="Back">New Scent Match</button>
+  </div>
+  {% endif %}
+  <button type="button" id="backButton" class="send-button" aria-label="Back">New Scent Match</button>
   <script>
     const selectedPerfume = {{ perfumes[0] | tojson }};
     const perfumeNotes = JSON.parse(document.getElementById('perfume-notes-data').textContent);
@@ -163,7 +164,6 @@
       }
     });
   </script>
-
 </body>
 </html>
 

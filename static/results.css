@@ -279,6 +279,8 @@ body.prompt-page {
   border-radius: 12px;
   padding: 10px 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  width:auto;
+  white-space:nowrap;
 }
 
 .note-box h4 {
@@ -435,23 +437,6 @@ body.prompt-page {
   }
 }
 
-/* After fadeInBounce completes, start infinite subtle bounce */
-.bottle {
-  animation-name: fadeInBounce, subtleBounce;
-  animation-duration: 0.6s, 2s;
-  animation-timing-function: ease-out, ease-in-out;
-  animation-fill-mode: forwards, infinite;
-  animation-iteration-count: 1, infinite;
-  animation-delay: var(--fade-delay), calc(var(--fade-delay) + 0.6s);
-}
-
-/* Use CSS variables to assign delay per bottle */
-.bottle:nth-child(1) { --fade-delay: 0s; }
-.bottle:nth-child(2) { --fade-delay: 0.3s; }
-.bottle:nth-child(3) { --fade-delay: 0.6s; }
-.bottle:nth-child(4) { --fade-delay: 0.9s; }
-.bottle:nth-child(5) { --fade-delay: 1.2s; }
-
 .loading-text {
   font-size: 1.2rem;
   color: #333;
@@ -463,7 +448,6 @@ body.prompt-page {
 .description-image img {
   width: 500px; /* or whatever size you want */
   height: auto;
-  border-radius: 8px;
 }
 
 .description-text {
@@ -473,8 +457,9 @@ body.prompt-page {
 .description-layout {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
-  gap: 24px;
+  align-items: flex-start;
+  /* align-items: stretch; */
+  /* gap: 24px; */
   width: 100%;
   height: 100%;
   flex-wrap: nowrap;
@@ -495,14 +480,21 @@ body.prompt-page {
 }
 
 .text-col {
-  padding: 0 16px;
+  /* padding: 0 16px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align:center;
+  justify-content:felx-start;
 }
 
 .notes-col {
-  max-width: none;
-  display: flex;
+  align-items:center;
+  display: inline-flex;
   flex-direction: column;
+  justify-content:center;
   gap: 16px;
+  height:100%;
 }
 
 .like-button-wrapper {
