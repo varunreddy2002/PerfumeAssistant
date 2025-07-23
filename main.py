@@ -73,7 +73,7 @@ def find_rec(user_input):
             perfume_line = f"Suggestion: {record['perfume']} (Score: {record['score']}, Rating: {record['rating']})"
             suggestions.append(perfume_line)
             perfumes.append(record['perfume'])
-    user_input["Recommended_Perfumes"] = perfumes
+    user_input["Recommended_Perfumes"] = []
     json_append(user_input)
     return suggestions, perfumes
 
@@ -118,3 +118,21 @@ def find_descriptions(perfumes):
         s = ""
         descriptions[p] = [desc if isinstance(desc, str) else "No description available.", s]
     return descriptions
+
+def update_liked_perfumes(perfumes):
+    json_path = 'user_input.json'
+    # Load the existing JSON data
+    try:
+        with open(json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        data = []
+
+    # Check if there's at least one entry
+    if data:
+        # Update the most recent (last) entry
+        data[-1]['Recommended_Perfumes'] = perfumes
+
+    # Save the updated list back to the file
+    with open(json_path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)

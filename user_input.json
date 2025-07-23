@@ -148,5 +148,13 @@
             "midnight",
             "infinite-seduction-for-her"
         ]
+    },
+    {
+        "username": "tester",
+        "prompt": "bob",
+        "Recommended_Perfumes": [
+            "ehsas",
+            "musc"
+        ]
     }
 ]

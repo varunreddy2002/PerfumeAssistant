@@ -46,29 +46,43 @@
         </div>
       </div>
     </div>
-      <div class="like-button-wrapper">
-  <button type="button" id="likeButton" class="like-button" aria-pressed="false" aria-label="Like this scent">
-    Like This Scent
-  </button>
-</div>
+    
+    <div style="text-align:center; margin: 20px 0;">
+      <button id="like-button" class="like-button" data-perfume = "{{perfumes[0]}}" onclick="toggleLike(this)">🤍</button>
+    </div>
 
-<script>
-  const likeBtn = document.getElementById('likeButton');
+    <script>
+      const likedPerfumes = new Set();
 
-  likeBtn.addEventListener('click', () => {
-    const isLiked = likeBtn.classList.toggle('liked');
+      async function toggleLike(button) {
+        const perfume = button.dataset.perfume;
+        const isLiked = likedPerfumes.has(perfume);
 
-    if (isLiked) {
-      likeBtn.textContent = 'Liked ✓';
-      likeBtn.setAttribute('aria-pressed', 'true');
-      likeBtn.setAttribute('aria-label', 'Unlike this scent');
-    } else {
-      likeBtn.textContent = 'Like This Scent';
-      likeBtn.setAttribute('aria-pressed', 'false');
-      likeBtn.setAttribute('aria-label', 'Like this scent');
-    }
-  });
-</script>
+        let action;
+        if (isLiked) {
+          likedPerfumes.delete(perfume);
+          action = 'remove';
+          button.textContent = '🤍';  // Unliked
+        } else {
+          likedPerfumes.add(perfume);
+          action = 'add';
+          button.textContent = '❤️';  // Liked
+        }
+
+        await fetch('/like', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            perfume: perfume,
+            action: action,
+            liked: Array.from(likedPerfumes)  // send full array
+          })
+        });
+      }
+    </script>
+
 
 
     {% if perfumes %}
@@ -117,9 +131,9 @@
     function showNotes(perfumeName) {
       const notes = perfumeNotes[perfumeName];
       if (!notes) return;
-      updateNoteList('top-notes-list', notes[0].slice(0, 6));
-      updateNoteList('middle-notes-list', notes[1].slice(0, 6));
-      updateNoteList('base-notes-list', notes[2].slice(0, 6));
+      updateNoteList('top-notes-list', notes[0].slice(0, 3));
+      updateNoteList('middle-notes-list', notes[1].slice(0, 3));
+      updateNoteList('base-notes-list', notes[2].slice(0, 3));
 
       const descriptionData = perfumeDescriptions[perfumeName];
       if (descriptionData) {
@@ -131,6 +145,11 @@
         document.getElementById('perfume-description-image').src = "{{ url_for('static', filename='images/default.png') }}";
       }
       document.getElementById('current-perfume-name').textContent = perfumeName;
+
+      const likeButton = document.getElementById('like-button');
+      likeButton.dataset.perfume = perfumeName;
+      likeButton.textContent = likedPerfumes.has(perfumeName) ? '❤️' : '🤍';
+
     }
 
     document.getElementById('backButton').onclick = () => {

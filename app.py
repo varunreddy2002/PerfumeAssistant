@@ -1,61 +1,5 @@
-# from flask import Flask, render_template, request, redirect, url_for, session
-# from main import find_rec, find_notes
-# from google import genai
-
- 
-# app = Flask(__name__)
-# app.secret_key = 'your_secret_key'
-# @app.route('/', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         session['username'] = request.form['username']
-#         return redirect(url_for('chat'))
-#     return render_template('login.html')
- 
-# @app.route('/chat', methods=['GET', 'POST'])
-# def chat():
-#     if 'username' not in session:
-#         return redirect(url_for('login'))
- 
-#     user_input = None
-#     results = []
-#     perfumes = []
-#     notes = {}
-#     selected_perfume = None
- 
-#     if request.method == 'POST':
-#         user_input = request.form['user_input']
-#         user_data = {
-#         "username":session['username'],
-#         "prompt":user_input
-#         }
-#         results, perfumes = find_rec(user_data)
-#         notes = find_notes(perfumes)
-#         selected_perfume = perfumes[0] if perfumes else None
-
- 
-#     return render_template('chat.html', username=session['username'], user_input=user_input, results=results,
-#         perfumes=perfumes,
-#         selected_perfume=selected_perfume,
-#         top_notes=notes.get(selected_perfume, [])[0] if selected_perfume else [],
-#         middle_notes=notes.get(selected_perfume, [])[1] if selected_perfume else [],
-#         base_notes=notes.get(selected_perfume, [])[2] if selected_perfume else [],
-#         all_notes=notes  # optional for dynamic JS update)
-#     )
- 
-# def generate_recommendations(prompt_text):
-#     # Dummy logic - replace with your own
-#     return [
-#         f"Analyzing: {prompt_text}",
-#         "Suggestion: Dior Homme",
-#         "Suggestion: Tom Ford Black Orchid",
-#         "Suggestion: Versace Eros"
-#     ]
- 
-# if __name__ == '__main__':
-#     app.run(debug=True)
-from flask import Flask, render_template, request, redirect, url_for, session
-from main import find_rec, find_notes, find_descriptions
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from main import find_rec, find_notes, find_descriptions, update_liked_perfumes
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -117,6 +61,21 @@ def results():
         all_notes=notes,
         descriptions = descriptions
     )
+
+@app.route('/like', methods=['POST'])
+def like():
+    data = request.get_json()
+    perfume = data.get('perfume')
+    action = data.get('action')
+    liked = data.get('liked', [])
+
+    # Store in session or process as needed
+    session['liked_perfumes'] = liked
+
+    # Call your processing function if needed
+    update_liked_perfumes(liked)
+
+    return jsonify(success=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
