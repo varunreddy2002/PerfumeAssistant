@@ -6,12 +6,13 @@
   <title>Perfume Recommender</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='prompt_style.css') }}" />
 </head>
+<img class="logo-image" src="{{ url_for('static', filename='IFF_Logo.svg') }}" alt="IFF Logo"/>
 <body class="prompt-page">
-  <button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
+  <button type="button" id="backButton" class="send-button" aria-label="Back">←</button>
 
   <div class="container">
     <h2>Welcome, {{ username }}!</h2>
-    <img src="{{ url_for('static', filename='Dahlia.png') }}" alt="Dahlia Flower" class="dahlia-inside" />
+    <img src="{{ url_for('static', filename='Dahlia.png') }}" alt="Dahlia Flower" class="dahlia" />
 
     <form method="post" id="prompt-form">
       <textarea

@@ -32,7 +32,6 @@ body {
 
 h2 {
     text-align: center;
-    margin: 0 0 20px 0;
     font-weight: 600;
 }
 
@@ -208,19 +207,24 @@ body.prompt-page {
   }
 }
 
-
-#backButton {
+.logo-image{
   position: fixed;
   top: 20px;
   left: 20px;
   z-index: 10000;
 }
+#backButton {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  z-index: 10000;
+}
 .send-button {
   padding: 6px 16px;  /* smaller vertical and horizontal padding */
-  border: 1px solid #ccc;
-  background-color: #007bff;
-  color: white;
-  font-size: 15px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: #B8C6D2;
+  font-size: 25px;
   font-weight: 600;
   font-family:'Nunito Sans', sans-serif; 
   text-align: center;
@@ -231,7 +235,11 @@ body.prompt-page {
 
 
 .send-button:hover {
-  background-color: #0056b3;
+  background-color: transparent;
+}
+
+.dahlia{
+  margin-bottom:30px;
 }
 
 .scent-pyramid {

@@ -5,7 +5,7 @@
 }
 
 html, body {
-  min-height: 100vh;
+  height: 100%;
   height:auto;
   margin: 0;
   padding: 0;
@@ -25,16 +25,32 @@ body {
     justify-content: center;
 }
 
+.logo-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 40px; /* Adjust size as needed */
+  z-index: 1000;
+}
+
+.perfume_name{
+    margin-top:5vh;
+}
+
 .container {
     width: 90vw;
     max-width: 100%;
     padding: 24px;
+    flex:1;
+    height: 100vh;
+    max-height:100%;
     display: flex;
     flex:unset;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding:1rem;
+    overflow:auto;
 
     /* 🔻 Removed white background and box shadow */
     background-color: transparent;
@@ -216,6 +232,10 @@ body.prompt-page {
   50% {
     transform: translateY(-8px);
   }
+}
+
+.rec_text{
+    text-align:center;
 }
 
 
@@ -453,15 +473,17 @@ body.prompt-page {
 .description-layout {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 24px;
   width: 100%;
-  margin-top: 24px;
+  height: 100%;
   flex-wrap: nowrap;
 }
 
 .description-column {
   flex: 1 1 33.333333%;
+  display:flex;
+  flex-direction:column;
   min-width: 0;
 }
 

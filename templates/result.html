@@ -6,6 +6,7 @@
   <title>Recommendations</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}" />
 </head>
+<img class="logo-image" src="{{ url_for('static', filename='IFF_Logo.svg') }}" alt="IFF Logo"/>
 <body class="prompt-page">
 
   <script id="perfume-notes-data" type="application/json">
@@ -15,7 +16,9 @@
   <script id="perfume-descriptions-data" type="application/json">
     {{ descriptions | tojson | safe }}
   </script>
-
+  <h2 class='perfume_name' id="current-perfume-name" style="text-align:center; font-weight:600;">
+    {{ perfumes[0] }}
+  </h2>
   <div class="container">
     <div class="description-layout">
       <div class="description-column image-col">
@@ -24,7 +27,7 @@
       </div>
 
       <div class="description-column text-col">
-        <h4>Description</h4>
+        <h4>{{selectedPerfume}}</h4>
         <p id="perfume-description-text">Click a perfume to view its description.</p>
       </div>
 
@@ -49,7 +52,7 @@
 
     {% if perfumes %}
     <div class="perfume-buttons">
-      <h4>View Notes For:</h4>
+      <h4 class="rec_text">Your Perfect Scent Matches</h4>
       <div class="perfume-card-grid">
         {% for perfume in perfumes %}
         <div class="perfume-card" onclick="showNotes('{{ perfume }}')">
@@ -72,7 +75,7 @@
       </div>
     </div>
     {% endif %}
-<button type="button" id="backButton" class="send-button" aria-label="Back">Back</button>
+<button type="button" id="backButton" class="send-button" aria-label="Back">New Scent Match</button>
   <script>
     const selectedPerfume = {{ perfumes[0] | tojson }};
     const perfumeNotes = JSON.parse(document.getElementById('perfume-notes-data').textContent);
@@ -106,6 +109,7 @@
         descriptionText.textContent = "No description available.";
         document.getElementById('perfume-description-image').src = "{{ url_for('static', filename='images/default.png') }}";
       }
+      document.getElementById('current-perfume-name').textContent = perfumeName;
     }
 
     document.getElementById('backButton').onclick = () => {

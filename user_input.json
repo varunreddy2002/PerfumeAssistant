@@ -38,5 +38,85 @@
             "athina",
             "vert-envolee"
         ]
+    },
+    {
+        "username": "t2",
+        "prompt": "interesting perfume",
+        "Recommended_Perfumes": [
+            "homme-elegant",
+            "al-oudh",
+            "christian-lacroix-noir",
+            "black"
+        ]
+    },
+    {
+        "username": "t2",
+        "prompt": "interesting perfume blurple",
+        "Recommended_Perfumes": [
+            "millesime-1849-eau-de-parfum",
+            "oud-marrakech",
+            "homme-elegant",
+            "essenza-di-un-isola-altrove"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "find me a floral rose scent ",
+        "Recommended_Perfumes": [
+            "lulutal-bahrain",
+            "romance",
+            "chance-eau-de-toilette",
+            "love-chopard"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "find me a floral rose scent",
+        "Recommended_Perfumes": [
+            "envy-me",
+            "vert-pivoine",
+            "sakura",
+            "mystique-femme"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "perfume",
+        "Recommended_Perfumes": [
+            "lulutal-bahrain",
+            "romance",
+            "chance-eau-de-toilette",
+            "love-chopard"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "sunny day",
+        "Recommended_Perfumes": [
+            "neroli-portofino-acqua",
+            "aqua-allegoria-pera-granita",
+            "eau-de-givenchy-2018",
+            "giordani-gold-original"
+        ]
+    },
+    {
+        "username": "tester",
+        "prompt": "subtitle",
+        "Recommended_Perfumes": [
+            "radio-bombay",
+            "luiza-by-luiza-brunet",
+            "dilis-classic-collection-no-8",
+            "1881"
+        ]
+    },
+    {
+        "username": "hi",
+        "prompt": "floral",
+        "Recommended_Perfumes": [
+            "envy-me",
+            "vert-pivoine",
+            "sakura",
+            "mystique-femme"
+        ]
     }
 ]

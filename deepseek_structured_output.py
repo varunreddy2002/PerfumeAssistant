@@ -13,7 +13,6 @@ from langchain_core.output_parsers import PydanticOutputParser
 class Fragrance(BaseModel):
     """Data model for information about a fragrance profile."""
     notes: str = Field(description="the 3 scent notes that best correlate with the prompt (eg. vanilla, citrus, rose)")
-    color: str = Field(description="3 colors that best match the note profile, ordered from lightest to darkest.")
     description_1: str = Field(description="A multi-line description explaining the first perfume, it's scent notes, and the impression they make.")
     description_2: str = Field(description="A multi-line description explaining the second perfume, it's scent notes, and the impression they make.")
     description_3: str = Field(description="A multi-line description explaining the third perfume, it's scent notes, and the impression they make.")
